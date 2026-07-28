@@ -25,26 +25,21 @@
     </header>
 
     <main>
-      <section class="page-hero home-hero red-panel">
-        <div class="hero-topline reveal"><span>Gurugram · Small batch home kitchen</span><span>Freshly cooked for your table</span></div>
-        <div class="hero-copy reveal">
-          <p class="eyebrow">THE PROTEIN DROP</p>
-          <h1>Protein.<br /><em>Thoughtfully Made.</em></h1>
-          <p class="hero-lead">Small-batch, high-protein food made for people who don’t have time to compromise on their health.</p>
+      <section class="page-hero home-hero tagline-hero red-panel">
+        <div class="hero-copy reveal" id="animated-hero-root">
+          <div class="hero-fallback">
+            <h1>Protein.<br /><span class="heading-accent">Thoughtfully Made.</span></h1>
+            <p class="hero-lead">High protein. Small batch. Delivered fresh.</p>
+            <a class="hero-cta" href="./order.html">Order Now</a>
+          </div>
         </div>
-        <div class="hero-collage" aria-label="Featured dishes">
-          <figure class="photo-card tall reveal"><img src="./public/images/polished/oriental-chicken.jpg" alt="Oriental style chicken with greens" /></figure>
-          <figure class="photo-card reveal"><img src="./public/images/polished/chicken-tikkis.jpg" alt="Chicken tikkis tossed with onions" /></figure>
-          <figure class="photo-card reveal"><img src="./public/images/polished/bihari-mutton.jpg" alt="Bihari mutton curry in a brass pan" /></figure>
-        </div>
-        <div class="marquee"><div>FRESHLY PREPARED <b>*</b> PRE-ORDER ONLY <b>*</b> HIGH-PROTEIN FOOD <b>*</b> DELIVERED WITH CARE <b>*</b></div></div>
       </section>
 
       <section class="story-band cream-panel">
         <span class="section-no">01 / WHO WE ARE</span>
         <div class="statement-grid">
           <p class="vertical-note">PREMIUM FOOD MEETS THOUGHTFUL WELLNESS</p>
-          <h2 class="reveal">Eating well<br />should feel <em>easy.</em></h2>
+          <h2 class="reveal">Eating well<br />should feel <span class="heading-accent">easy.</span></h2>
           <div class="statement-text reveal">
             <p>The Protein Drop creates thoughtfully curated, protein-rich food that is delicious, convenient and prepared in small batches.</p>
             <p>For a nourishing lunch, a post-workout meal, or an easier way to eat better as a family, the idea is simple: eat well without making it another task.</p>
@@ -57,7 +52,7 @@
         <span class="section-no light-text">02 / THE PROTEIN PROMISE</span>
         <div class="promise-intro reveal">
           <p class="eyebrow light-text">NO FADS. NO PUNISHMENT.</p>
-          <h2>Made fresh.<br /><em>Made with flavour.</em></h2>
+          <h2>Made fresh.<br /><span class="heading-accent">Made with flavour.</span></h2>
         </div>
         <div class="promise-list">
           <div class="promise-item"><b>01</b><span>Freshly cooked</span><i>Not pulled from a freezer.</i></div>
@@ -86,7 +81,7 @@
         <span class="section-no">04 / WHAT'S COOKING</span>
         <div class="food-heading reveal">
           <p class="eyebrow">FOOD IN MOTION</p>
-          <h2>Fresh drops.<br /><em>Moving through.</em></h2>
+          <h2>Fresh drops.<br /><span class="heading-accent">Moving through.</span></h2>
         </div>
         <div class="photo-river reveal" aria-label="Moving gallery of The Protein Drop dishes">
           <div class="photo-river-track">
@@ -115,8 +110,9 @@
     <footer>
       <div class="footer-top"><p>THE PROTEIN DROP</p><p>GURUGRAM, INDIA</p><a href="#top">BACK TO TOP ↑</a></div>
       <div class="footer-links"><div><a href="./index.html">Home</a><a href="./why.html">Why TPD?</a><a href="./menu.html">The menu</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919999999999" target="_blank" rel="noreferrer">WhatsApp ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
-      <div class="footer-logo">PROTEIN<br /><em>DROP.</em></div>
+      <div class="footer-logo">PROTEIN<br /><span>DROP.</span></div>
     </footer>
+    <script type="module" src="./src/hero.jsx"></script>
     <script src="./src/main.js"></script>
   </body>
 </html>
