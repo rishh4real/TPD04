@@ -126,9 +126,16 @@ a { color: inherit; }
   text-decoration: none;
   font-size: 15px;
   font-weight: 700;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
 }
 
 .nav-order b { padding-left: 8px; }
+
+.nav-order:hover {
+  transform: translateY(-3px);
+  background: var(--deep-red);
+  box-shadow: 0 14px 34px rgba(215, 25, 32, .26);
+}
 
 .menu-toggle { display: none; }
 
@@ -221,11 +228,14 @@ blockquote {
 }
 
 h1 { font-size: 8.6rem; }
-h2 { font-size: 7.2rem; }
+h2 { font-size: clamp(4.4rem, 6.2vw, 6rem); }
 
 em {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: .92;
 }
 
 .hero-lead {
@@ -279,6 +289,14 @@ em {
   background: transparent;
   position: relative;
   box-shadow: 0 26px 70px rgba(48, 0, 0, .22);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.photo-card:hover,
+.food-tile:hover,
+.order-photo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 90px rgba(48, 0, 0, .28);
 }
 
 .photo-card.tall { grid-row: span 2; }
@@ -347,16 +365,6 @@ em {
   }
 }
 
-.scroll-reveal-text {
-  transform-origin: 0% 50%;
-}
-
-.scroll-reveal-text .word,
-.closing-quote blockquote .word {
-  display: inline-block;
-  will-change: opacity, filter;
-}
-
 .section-no {
   position: absolute;
   top: 46px;
@@ -413,6 +421,12 @@ em {
   text-decoration: none;
   font: 500 10px var(--mono);
   text-transform: uppercase;
+  transition: transform .25s ease, color .25s ease;
+}
+
+.text-link:hover {
+  color: var(--red);
+  transform: translateX(8px);
 }
 
 .promise-intro,
@@ -441,6 +455,11 @@ em {
 .promise-item.visible {
   opacity: 1;
   transform: none;
+}
+
+.promise-item:hover {
+  padding-left: 14px;
+  background: rgba(255, 250, 245, .08);
 }
 
 .promise-item b,
@@ -762,7 +781,10 @@ em {
 
 .menu-grid-board .menu-card:nth-child(3n) { border-right: 1px solid var(--light-line); }
 .menu-grid-board .menu-card:nth-child(2n) { border-right: 0; }
-.menu-card:hover { background: var(--deep-red); }
+.menu-card:hover {
+  background: var(--deep-red);
+  transform: translateY(-6px);
+}
 
 .menu-card-top {
   display: flex;
@@ -1046,13 +1068,15 @@ footer {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .75s ease, transform .75s ease;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease, filter .7s ease;
+  filter: blur(4px);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: none;
+  filter: blur(0);
 }
 
 @media (max-width: 1180px) {

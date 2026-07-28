@@ -331,68 +331,6 @@ if (weeklyTitle && weeklyDescription) {
   weeklyDescription.textContent = weeklyDrop.description;
 }
 
-const splitWords = element => {
-  if (element.dataset.scrollRevealReady === 'true') return;
-  const text = element.textContent.trim();
-  if (!text) return;
-  element.innerHTML = text
-    .split(/(\s+)/)
-    .map(part => (/^\s+$/.test(part) ? part : `<span class="word">${part}</span>`))
-    .join('');
-  element.dataset.scrollRevealReady = 'true';
-};
-
-const initScrollReveal = () => {
-  const textBlocks = document.querySelectorAll('.scroll-reveal-text, .closing-quote blockquote');
-  textBlocks.forEach(splitWords);
-
-  if (!window.gsap || !window.ScrollTrigger) {
-    textBlocks.forEach(element => element.classList.add('scroll-reveal-fallback'));
-    return;
-  }
-
-  window.gsap.registerPlugin(window.ScrollTrigger);
-
-  textBlocks.forEach(element => {
-    const words = element.querySelectorAll('.word');
-    if (!words.length) return;
-
-    window.gsap.fromTo(
-      element,
-      { transformOrigin: '0% 50%', rotate: 4 },
-      {
-        ease: 'none',
-        rotate: 0,
-        scrollTrigger: {
-          trigger: element,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      },
-    );
-
-    window.gsap.fromTo(
-      words,
-      { opacity: 0.12, filter: 'blur(8px)' },
-      {
-        ease: 'none',
-        opacity: 1,
-        filter: 'blur(0px)',
-        stagger: 0.045,
-        scrollTrigger: {
-          trigger: element,
-          start: 'top bottom-=18%',
-          end: 'bottom bottom',
-          scrub: true,
-        },
-      },
-    );
-  });
-};
-
-initScrollReveal();
-
 observeElements(document.querySelectorAll('.reveal, .promise-item, .order-steps article, .menu-card'));
 
 const page = document.body.dataset.page;
