@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Protein Drop - The Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body data-page="menu">
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <a class="wordmark" href="./index.html"><span>THE</span> PROTEIN<br />DROP<span class="period">.</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><span>MENU</span></button>
+      <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="./index.html" data-nav="home">Home</a>
+        <a class="nav-link" href="./why.html" data-nav="why">Why TPD?</a>
+        <a class="nav-link" href="./menu.html" data-nav="menu">The Menu</a>
+        <a class="nav-link" href="./order.html" data-nav="order">How to order</a>
+        <a class="nav-order" href="./order.html">Order a drop <b>↗</b></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero menu-hero dark-panel">
+        <div class="hero-copy reveal">
+          <p class="eyebrow light-text">THE MENU</p>
+          <h1>Pick a mood.<br /><em>Pick protein.</em></h1>
+          <p class="hero-lead">Recipes with stories, small-batch cooking, and high-protein comfort.</p>
+        </div>
+        <div class="menu-photo-row">
+          <img src="./public/images/polished/chicken-tikkis.jpg" alt="Chicken tikkis" />
+          <img src="./public/images/polished/bihari-mutton.jpg" alt="Bihari mutton" />
+          <img src="./public/images/polished/oriental-chicken.jpg" alt="Oriental chicken" />
+        </div>
+      </section>
+
+      <section class="menu-panel menu-board dark-panel">
+        <span class="section-no light-text">01 / CURRENT DROPS</span>
+        <div class="menu-heading reveal">
+          <p class="eyebrow light-text">READ THE TABLE</p>
+          <h2>What's<br /><em>cooking?</em></h2>
+        </div>
+        <div class="menu-board-layout">
+          <aside class="menu-plates" aria-label="Menu dish photos">
+            <figure><img src="./public/images/polished/bihari-mutton.jpg" alt="Ghar ka Bihari mutton" /></figure>
+            <figure><img src="./public/images/polished/chicken-tikkis.jpg" alt="Chicken tikkis" /></figure>
+            <figure><img src="./public/images/polished/sarson-fish.jpg" alt="Sarson fish" /></figure>
+          </aside>
+          <div class="menu-lists">
+            <section class="dish-section">
+              <div class="dish-section-head">
+                <span>01</span>
+                <h3>Non-Vegetarian</h3>
+                <p>Chicken, mutton and fish drops from a small-batch kitchen.</p>
+              </div>
+              <div class="menu-grid menu-grid-board" id="nonVegMenu"></div>
+            </section>
+            <section class="dish-section">
+              <div class="dish-section-head">
+                <span>02</span>
+                <h3>Vegetarian</h3>
+                <p>Paneer, tofu, soya, salads and Bihari comfort plates.</p>
+              </div>
+              <div class="menu-grid menu-grid-board" id="vegMenu"></div>
+            </section>
+            <section class="dish-section favourites-empty">
+              <div class="dish-section-head">
+                <span>03</span>
+                <h3>House Favourites</h3>
+                <p>Leaving this empty for now until the signature picks are final.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <p class="menu-note">Protein values are approximate for 200g raw. A dash means that size is not listed yet.</p>
+      </section>
+
+      <section class="bowl cream-panel">
+        <span class="section-no">02 / BUILD YOUR OWN BOWL</span>
+        <div class="bowl-heading reveal">
+          <p class="eyebrow">YOUR BOWL, YOUR WAY</p>
+          <h2>Make it<br /><em>yours.</em></h2>
+          <p>Choose protein, flavour, heat, and portion.</p>
+        </div>
+        <div class="bowl-builder">
+          <div class="bowl-gallery">
+            <img src="./public/images/polished/butter-chicken.jpg" alt="Butter chicken" />
+            <img src="./public/images/polished/sarson-fish.jpg" alt="Sarson fish" />
+            <img src="./public/images/polished/slow-chaap.jpg" alt="Chaap" />
+          </div>
+          <div class="builder-steps">
+            <button class="builder-step selected" data-choice="Chicken">01 <b>Choose a protein</b><span>Chicken</span><i>+</i></button>
+            <button class="builder-step" data-choice="Mutton">02 <b>Choose a base</b><span>Bowl or box</span><i>+</i></button>
+            <button class="builder-step" data-choice="Spicy">03 <b>Choose your heat</b><span>Bold & spicy</span><i>+</i></button>
+            <a href="./order.html" class="builder-order">Build my bowl <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-quote dark-panel">
+        <p class="eyebrow light-text reveal">PRE-ORDER ONLY</p>
+        <blockquote class="reveal">Browse the menu, pick your pack size, and message on WhatsApp. No cart. No payment gateway.</blockquote>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top"><p>THE PROTEIN DROP</p><p>THE MENU</p><a href="#top">BACK TO TOP ↑</a></div>
+      <div class="footer-links"><div><a href="./index.html">Home</a><a href="./why.html">Why TPD?</a><a href="./menu.html">The menu</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919999999999" target="_blank" rel="noreferrer">WhatsApp ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
+      <div class="footer-logo">MENU<br /><em>DROP.</em></div>
+    </footer>
+    <script src="./src/vendor/gsap.min.js"></script>
+    <script src="./src/vendor/ScrollTrigger.min.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
+</html>

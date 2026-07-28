@@ -1,0 +1,14 @@
+{
+  "name": "the-protein-drop",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && cp -R public dist/public && cp -R src dist/src"
+  },
+  "devDependencies": {
+    "vite": "latest"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}
