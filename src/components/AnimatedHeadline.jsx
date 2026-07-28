@@ -52,15 +52,19 @@ export default function AnimatedHeadline() {
         High protein. Small batch. Delivered fresh.
       </motion.p>
 
-      <motion.a
-        className="animated-cta inline-flex items-center justify-center rounded-full bg-[#DC2626] px-8 py-4 font-semibold text-white transition hover:scale-[1.02] hover:bg-red-700"
-        href="./order.html"
+      <motion.div
+        className="animated-actions"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        Order Now
-      </motion.a>
+        <a className="animated-cta primary" href="./menu.html">
+          View Menu
+        </a>
+        <a className="animated-cta secondary" href="./order.html">
+          How to Order
+        </a>
+      </motion.div>
     </div>
   );
 }
