@@ -276,13 +276,7 @@ const defaultMenuItems = [
 
 window.TPD_DEFAULT_MENU = defaultMenuItems;
 
-const defaultWeeklyDrop = {
-  title: 'Weekend Protein Box',
-  description: 'A rotating weekly special for busy tables: generous protein, fresh sides and one seasonal flavour.',
-};
-
 const menuItems = defaultMenuItems;
-const weeklyDrop = defaultWeeklyDrop;
 
 const observeElements = elements => {
   elements.forEach(element => observer.observe(element));
@@ -292,11 +286,27 @@ const formatPrice = value => (value === '-' ? '-' : `₹${value}`);
 
 const sortDish = (a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' });
 
+const proteinLevel = protein => {
+  const matches = protein.match(/\d+/g) || [];
+  const high = Math.max(...matches.map(Number), 0);
+  return Math.min(100, Math.round((high / 45) * 100));
+};
+
+const proteinTone = protein => {
+  const level = proteinLevel(protein);
+  if (level >= 88) return 'high';
+  if (level >= 70) return 'mid';
+  return 'soft';
+};
+
 const menuCard = (item, index) => `
   <article class="menu-card reveal">
     <div class="menu-card-top">
       <span>${String(index + 1).padStart(2, '0')}</span>
-      <small>${item.protein}</small>
+      <div class="protein-meter ${proteinTone(item.protein)}" style="--protein: ${proteinLevel(item.protein)}%" aria-label="${item.protein} approximate protein">
+        <span>${item.protein}</span>
+        <i>protein</i>
+      </div>
     </div>
     <h3>${item.name}</h3>
     <p>${item.detail}</p>
@@ -322,13 +332,6 @@ if (nonVegGrid && vegGrid) {
   const vegItems = menuItems.filter(item => item.section === 'veg').sort(sortDish);
   nonVegGrid.innerHTML = nonVegItems.map(menuCard).join('');
   vegGrid.innerHTML = vegItems.map(menuCard).join('');
-}
-
-const weeklyTitle = document.querySelector('[data-weekly-title]');
-const weeklyDescription = document.querySelector('[data-weekly-description]');
-if (weeklyTitle && weeklyDescription) {
-  weeklyTitle.textContent = weeklyDrop.title;
-  weeklyDescription.textContent = weeklyDrop.description;
 }
 
 observeElements(document.querySelectorAll('.reveal, .promise-item, .order-steps article, .menu-card'));

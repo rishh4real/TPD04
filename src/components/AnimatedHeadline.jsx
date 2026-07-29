@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const lines = ['Protein.', 'Thoughtfully Made.'];
+const lines = ['Food, loved.', 'Shared.', 'Empowered.'];
 
 const container = {
   hidden: {},
@@ -32,7 +32,7 @@ export default function AnimatedHeadline() {
         variants={container}
         initial="hidden"
         animate="show"
-        aria-label="Protein. Thoughtfully Made."
+        aria-label="Food, loved. Shared. Empowered."
       >
         {lines.map(line => (
           <span className="line-mask block overflow-hidden" key={line}>
@@ -49,7 +49,7 @@ export default function AnimatedHeadline() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
       >
-        High protein. Small batch. Delivered fresh.
+        High protein. Small batch. Made with care.
       </motion.p>
 
       <motion.div
