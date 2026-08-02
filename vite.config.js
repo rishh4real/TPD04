@@ -11,6 +11,7 @@ export default defineConfig({
         home: 'index.html',
         why: 'why.html',
         menu: 'menu.html',
+        bowl: 'bowl.html',
         order: 'order.html',
       },
     },

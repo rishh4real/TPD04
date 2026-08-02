@@ -5,20 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="The Protein Drop - protein-rich, small-batch food made thoughtfully for busy people and families." />
     <title>The Protein Drop - Home</title>
+    <link rel="icon" type="image/png" href="./public/images/tpd-logo-mark.png" />
+    <link rel="apple-touch-icon" href="./public/images/tpd-logo-mark.png" />
+    <script>
+      if (window.location.hash === '#svetys-kitchen') {
+        document.documentElement.classList.add('skip-site-opener');
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/style.css?v=tpd-menu-rail-20260801-7" />
   </head>
   <body data-page="home">
     <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="site-opener" aria-hidden="true">
+      <div class="opener-lines">
+        <p class="opener-line opener-line-one">We know you need protein.</p>
+        <p class="opener-line opener-line-two">Let’s make it the Chatkaara way.</p>
+      </div>
+    </div>
     <header class="site-header" id="top">
-      <a class="wordmark" href="./index.html" aria-label="The Protein Drop home"><span>THE</span> PROTEIN<br />DROP<span class="period">.</span></a>
+      <a class="wordmark" href="./index.html" aria-label="The Protein Drop home">
+        <img class="wordmark-mark" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
+        <span class="wordmark-live"><small>The</small><b>Protein<br />Drop</b></span>
+      </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><span>MENU</span></button>
       <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
+        <a class="mobile-nav-brand" href="./index.html"><img src="./public/images/tpd-logo-full.png" alt="The Protein Drop" /></a>
         <a class="nav-link" href="./index.html#svetys-kitchen" data-nav="home">Svety’s Table</a>
         <a class="nav-link" href="./why.html" data-nav="why">Why The Protein Drop</a>
-        <a class="nav-link" href="./menu.html#build-bowl" data-nav="menu">Build Your Own Bowl</a>
+        <a class="nav-link" href="./menu.html" data-nav="menu">The Menu</a>
+        <a class="nav-link" href="./bowl.html" data-nav="bowl">Build Your Own Bowl</a>
         <a class="nav-link" href="./order.html" data-nav="order">How to order</a>
         <a class="nav-order" href="https://wa.me/919818946902" target="_blank" rel="noreferrer">Order a drop <b>↗</b></a>
       </nav>
@@ -26,24 +44,12 @@
 
     <main>
       <section class="page-hero home-hero logo-led-hero red-panel">
-        <div class="brand-opening reveal">
-          <p class="eyebrow light-text">CHATKAARA BY SVETY PRESENTS</p>
-          <div class="amplified-logo" aria-label="The Protein Drop">
-            <span>THE</span>
-            <strong>PROTEIN</strong>
-            <b>DROP.</b>
-          </div>
-          <nav class="home-tabs" aria-label="Featured sections">
-            <a href="#svetys-kitchen">Svety’s Table</a>
-            <a href="./why.html">Why The Protein Drop</a>
-            <a href="./menu.html#build-bowl">Build Your Own Bowl</a>
-          </nav>
-        </div>
+        <img class="hero-watermark-logo" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
         <div class="hero-manifesto reveal">
-          <p class="eyebrow light-text">THE SMALL REBELLION</p>
-          <h1>Food needs to be<br />loved, shared and<br />empowered.</h1>
-          <p>We have complicated food far too much. We count it. Fear it. Earn it. Regret it. TPD is our small rebellion against all of that.</p>
-          <p>So, we make food from a position of love and care — nourishing enough in terms of protein, and warm enough to feel human.</p>
+          <p class="eyebrow light-text">THE HOME KITCHEN DROP</p>
+          <h1>Real food.<br />Real protein.<br />Made at home.</h1>
+          <p>Small-batch food from Svety’s kitchen for busy people and families who want flavour, comfort and enough protein without turning dinner into a project.</p>
+          <p>Freshly prepared on pre-order, packed with care, and delivered warm enough to feel personal.</p>
           <div class="hero-actions">
             <a class="hero-cta primary" href="./menu.html">View Menu</a>
             <a class="hero-cta secondary" href="./order.html">How to Order</a>
@@ -59,8 +65,11 @@
           <div class="statement-text reveal">
             <p>My name is Svety. I have been corporate, now I am an entrepreneur, and I will always be Bihari. You will find a lot of my ethnicity in the food I bring to you.</p>
             <p>I love cooking, eating, talking about food and, most of all, feeding people. The Protein Drop is that same home table, made a little bigger.</p>
-            <a class="text-link" href="./why.html">Read why TPD exists <span>↘</span></a>
+            <a class="text-link" href="#svetys-kitchen">This is Svety’s Table <span>↘</span></a>
           </div>
+          <figure class="svety-table-photo reveal">
+            <img src="./public/images/polished/client/svety-table-poster.png" alt="Svety standing beside The Protein Drop poster" />
+          </figure>
         </div>
       </section>
 
@@ -87,18 +96,22 @@
         </div>
         <div class="photo-river reveal" aria-label="Moving gallery of The Protein Drop dishes">
           <div class="photo-river-track">
-            <img src="./public/images/polished/sarson-fish.jpg" alt="Bihari sarson fish" />
-            <img src="./public/images/polished/butter-chicken.jpg" alt="Deconstructed butter chicken" />
-            <img src="./public/images/polished/slow-chaap.jpg" alt="Slow cooked chaap" />
-            <img src="./public/images/polished/oriental-chicken.jpg" alt="Oriental style chicken" />
-            <img src="./public/images/polished/chicken-tikkis.jpg" alt="Chicken tikkis" />
-            <img src="./public/images/polished/bihari-mutton.jpg" alt="Ghar ka Bihari mutton" />
-            <img src="./public/images/polished/sarson-fish.jpg" alt="" />
-            <img src="./public/images/polished/butter-chicken.jpg" alt="" />
-            <img src="./public/images/polished/slow-chaap.jpg" alt="" />
-            <img src="./public/images/polished/oriental-chicken.jpg" alt="" />
-            <img src="./public/images/polished/chicken-tikkis.jpg" alt="" />
-            <img src="./public/images/polished/bihari-mutton.jpg" alt="" />
+            <img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="Oriental chicken with bok choy" />
+            <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="Barley feta salad" />
+            <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="Fresh chicken tikkis" />
+            <img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="Mutton curry with scallions" />
+            <img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="Tofu sesame stir fry" />
+            <img src="./public/images/polished/client/litti-chokha.jpg" alt="Litti chokha" />
+            <img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="Olive chicken salad" />
+            <img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="Sarson fish" />
+            <img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="" />
+            <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="" />
+            <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="" />
+            <img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="" />
+            <img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="" />
+            <img src="./public/images/polished/client/litti-chokha.jpg" alt="" />
+            <img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="" />
+            <img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="" />
           </div>
         </div>
       </section>
@@ -111,9 +124,9 @@
 
     <footer>
       <div class="footer-top"><p>THE PROTEIN DROP</p><p>GURUGRAM, INDIA</p><a href="#top">BACK TO TOP ↑</a></div>
-      <div class="footer-links"><div><a href="./index.html#svetys-kitchen">Svety’s Table</a><a href="./why.html">Why The Protein Drop</a><a href="./menu.html#build-bowl">Build Your Own Bowl</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
+      <div class="footer-links"><div><a href="./index.html#svetys-kitchen">Svety’s Table</a><a href="./why.html">Why The Protein Drop</a><a href="./menu.html">The menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
       <div class="footer-logo">PROTEIN<br /><span>DROP.</span></div>
     </footer>
-    <script src="./src/main.js"></script>
+    <script src="./src/main.js?v=tpd-menu-rail-20260801-7"></script>
   </body>
 </html>
