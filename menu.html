@@ -9,24 +9,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/style.css?v=tpd-menu-rail-20260801-7" />
+    <link rel="stylesheet" href="./src/style.css?v=tpd-whatsapp-order-20260805-1" />
   </head>
   <body data-page="menu">
     <div class="cursor-glow" aria-hidden="true"></div>
     <header class="site-header" id="top">
       <a class="wordmark" href="./index.html" aria-label="The Protein Drop home">
-        <img class="wordmark-mark" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
         <span class="wordmark-live"><small>The</small><b>Protein<br />Drop</b></span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><span>MENU</span></button>
       <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
-        <a class="mobile-nav-brand" href="./index.html"><img src="./public/images/tpd-logo-full.png" alt="The Protein Drop" /></a>
-        <a class="nav-link" href="./index.html#svetys-kitchen" data-nav="home">Svety’s Table</a>
-        <a class="nav-link" href="./why.html" data-nav="why">Why The Protein Drop</a>
-        <a class="nav-link" href="./menu.html" data-nav="menu">The Menu</a>
+        <a class="mobile-nav-brand" href="./index.html"><span class="wordmark-mobile"><small>The</small><b>Protein<br />Drop</b></span></a>
+        <a class="nav-link" href="./index.html" data-nav="home">Svety’s Table</a>
+        <a class="nav-link" href="./menu.html" data-nav="menu">Menu</a>
         <a class="nav-link" href="./bowl.html" data-nav="bowl">Build Your Own Bowl</a>
-        <a class="nav-link" href="./order.html" data-nav="order">How to order</a>
-        <a class="nav-order" href="https://wa.me/919818946902" target="_blank" rel="noreferrer">Order a drop <b>↗</b></a>
+        <a class="nav-link" href="./order.html" data-nav="order">Order</a>
+        <a class="nav-link nav-cart" href="./cart.html" data-nav="cart" aria-label="Cart"><img src="./public/images/cart-icon.svg" alt="" aria-hidden="true" /><span>Cart</span><b data-cart-count>0</b></a>
       </nav>
     </header>
 
@@ -34,8 +32,9 @@
       <section class="page-hero menu-hero cream-panel light-menu-hero">
         <div class="hero-copy reveal">
           <p class="eyebrow">THE MENU</p>
-          <h1>Pick a mood.<br /><span class="heading-accent">Pick protein.</span></h1>
-          <p class="hero-lead">Recipes with stories, small-batch cooking, and high-protein comfort.</p>
+          <h1>Every recipe has earned its place on this menu.</h1>
+          <p class="hero-lead">Some came from my childhood, some from friends, some from years of experimenting.</p>
+          <p class="hero-lead">But every single one is cooked exactly the way I’d serve it at my own table.</p>
         </div>
         <div class="menu-photo-row">
           <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="Chicken tikkis" />
@@ -53,7 +52,6 @@
         <div class="menu-category-rail reveal" aria-label="Menu category tabs">
           <a href="#nonVegMenu">Non-Vegetarian</a>
           <a href="#vegMenu">Vegetarian</a>
-          <a href="#houseFavourites">House Favourites</a>
         </div>
         <div class="menu-board-layout">
           <aside class="menu-plates moving-menu-plates" aria-label="Moving menu dish photos">
@@ -97,7 +95,7 @@
             </div>
           </aside>
           <div class="menu-lists">
-            <section class="dish-section">
+            <section class="dish-section dish-section-nonveg">
               <div class="dish-section-head">
                 <span>01</span>
                 <h3>Non-Vegetarian</h3>
@@ -105,7 +103,7 @@
               </div>
               <div class="menu-grid menu-grid-board" id="nonVegMenu"></div>
             </section>
-            <section class="dish-section">
+            <section class="dish-section dish-section-veg">
               <div class="dish-section-head">
                 <span>02</span>
                 <h3>Vegetarian</h3>
@@ -113,16 +111,9 @@
               </div>
               <div class="menu-grid menu-grid-board" id="vegMenu"></div>
             </section>
-            <section class="dish-section favourites-empty" id="houseFavourites">
-              <div class="dish-section-head">
-                <span>03</span>
-                <h3>House Favourites</h3>
-                <p>Leaving this empty for now until the signature picks are final.</p>
-              </div>
-            </section>
           </div>
         </div>
-        <p class="menu-note">Protein values are approximate for 200g raw. A dash means that size is not listed yet.</p>
+        <p class="menu-note">Protein values are approximate for 200g raw. Prices are listed for 300g, 500g and 1kg. A dash means that size is not listed yet.</p>
       </section>
 
       <section class="closing-quote cream-panel soft-closing">
@@ -133,9 +124,9 @@
 
     <footer>
       <div class="footer-top"><p>THE PROTEIN DROP</p><p>THE MENU</p><a href="#top">BACK TO TOP ↑</a></div>
-      <div class="footer-links"><div><a href="./index.html#svetys-kitchen">Svety’s Table</a><a href="./why.html">Why The Protein Drop</a><a href="./menu.html">The menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
+      <div class="footer-links"><div><a href="./index.html">Svety’s Table</a><a href="./menu.html">Menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">Order</a><a href="./cart.html">Cart</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
       <div class="footer-logo">MENU<br /><span>DROP.</span></div>
     </footer>
-    <script src="./src/main.js?v=tpd-menu-rail-20260801-7"></script>
+    <script type="module" src="./src/main.js?v=tpd-whatsapp-order-20260805-1"></script>
   </body>
 </html>

@@ -8,14 +8,14 @@
     <link rel="icon" type="image/png" href="./public/images/tpd-logo-mark.png" />
     <link rel="apple-touch-icon" href="./public/images/tpd-logo-mark.png" />
     <script>
-      if (window.location.hash === '#svetys-kitchen') {
+      if (window.location.hash === '#protein-drop-about') {
         document.documentElement.classList.add('skip-site-opener');
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/style.css?v=tpd-menu-rail-20260801-7" />
+    <link rel="stylesheet" href="./src/style.css?v=tpd-updated-07" />
   </head>
   <body data-page="home">
     <div class="cursor-glow" aria-hidden="true"></div>
@@ -27,106 +27,79 @@
     </div>
     <header class="site-header" id="top">
       <a class="wordmark" href="./index.html" aria-label="The Protein Drop home">
-        <img class="wordmark-mark" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
         <span class="wordmark-live"><small>The</small><b>Protein<br />Drop</b></span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><span>MENU</span></button>
       <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
-        <a class="mobile-nav-brand" href="./index.html"><img src="./public/images/tpd-logo-full.png" alt="The Protein Drop" /></a>
-        <a class="nav-link" href="./index.html#svetys-kitchen" data-nav="home">Svety’s Table</a>
-        <a class="nav-link" href="./why.html" data-nav="why">Why The Protein Drop</a>
-        <a class="nav-link" href="./menu.html" data-nav="menu">The Menu</a>
+        <a class="mobile-nav-brand" href="./index.html"><span class="wordmark-mobile"><small>The</small><b>Protein<br />Drop</b></span></a>
+        <a class="nav-link" href="./index.html" data-nav="home">Svety’s Table</a>
+        <a class="nav-link" href="./menu.html" data-nav="menu">Menu</a>
         <a class="nav-link" href="./bowl.html" data-nav="bowl">Build Your Own Bowl</a>
-        <a class="nav-link" href="./order.html" data-nav="order">How to order</a>
-        <a class="nav-order" href="https://wa.me/919818946902" target="_blank" rel="noreferrer">Order a drop <b>↗</b></a>
+        <a class="nav-link" href="./order.html" data-nav="order">Order</a>
+        <a class="nav-link nav-cart" href="./cart.html" data-nav="cart" aria-label="Cart"><img src="./public/images/cart-icon.svg" alt="" aria-hidden="true" /><span>Cart</span><b data-cart-count>0</b></a>
       </nav>
     </header>
 
     <main>
-      <section class="page-hero home-hero logo-led-hero red-panel">
-        <img class="hero-watermark-logo" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
-        <div class="hero-manifesto reveal">
-          <p class="eyebrow light-text">THE HOME KITCHEN DROP</p>
-          <h1>Real food.<br />Real protein.<br />Made at home.</h1>
-          <p>Small-batch food from Svety’s kitchen for busy people and families who want flavour, comfort and enough protein without turning dinner into a project.</p>
-          <p>Freshly prepared on pre-order, packed with care, and delivered warm enough to feel personal.</p>
-          <div class="hero-actions">
-            <a class="hero-cta primary" href="./menu.html">View Menu</a>
-            <a class="hero-cta secondary" href="./order.html">How to Order</a>
+      <div id="small-rebellion-root"></div>
+
+      <section class="about-drop cream-panel" id="protein-drop-about">
+        <span class="section-no">01 / THE PROTEIN DROP</span>
+        <div class="about-drop-copy reveal">
+          <p class="eyebrow">ABOUT TPD</p>
+          <h2>The <span class="headline-shine">Protein Drop</span> isn’t a meal plan.</h2>
+          <div class="about-drop-text">
+            <p>It is food made with love and care that is high in protein.</p>
+            <p>Thoughtfully made, in small batches, for people who care about what they eat but don’t always have the time to make it themselves.</p>
+            <p>Pre-order only. Available in Gurgaon for now.</p>
+          </div>
+        </div>
+        <figure class="about-drop-logo reveal">
+          <img src="./public/images/tpd-logo-full.png" alt="The Protein Drop" />
+        </figure>
+      </section>
+
+      <section class="know-cook-section cream-panel" id="know-your-cook">
+        <span class="section-no">02 / KNOW YOUR COOK</span>
+        <figure class="know-cook-photo reveal">
+          <img src="./public/images/polished/client/svety-table-poster.png" alt="Svety standing beside The Protein Drop poster" />
+        </figure>
+        <div class="know-cook-copy reveal">
+          <p class="eyebrow">FROM THE COOK</p>
+          <h2>My name is Svety.</h2>
+          <div class="know-cook-text">
+            <p>I love cooking, eating, most of all, feeding people. Some of my happiest memories have food at their centre.</p>
+            <p>I have been a corporate and now, am an entrepreneur. I will always be a Bihari. You will find a lot of my ethnicity in the food I bring to you.</p>
+            <p>While the name of these dishes may be things you have tried earlier, they will not be the same. They are inspired. I can’t not leave some bit of my emotions, my love, my joy in your food.</p>
+            <p>I’ve also been overweight for most of my life. The world tells us these two things cannot comfortably coexist. If you’re overweight, you’re expected to have a complicated relationship with food—one defined by guilt, restraint and regret. We’re taught to speak of food in numbers and negotiations.</p>
+            <p class="highlight-red-break">Good food is indulgence. Healthy food is sacrifice. Pleasure comes with apology.</p>
+            <p>The Protein Drop is deeply personal because it comes from that place.</p>
+            <p>Because life is busy. Because we’re all trying to do better—for our bodies, our health, our families. And because somewhere along the way, healthy food became joyless and delicious food became sinful.</p>
+            <p class="highlight-red-break">I refuse to choose.</p>
           </div>
         </div>
       </section>
 
-      <section class="story-band kitchen-intro cream-panel" id="svetys-kitchen">
-        <span class="section-no">01 / SVETY’S KITCHEN</span>
-        <div class="statement-grid">
-          <p class="vertical-note">MADE BY SVETY · MADE TO SHARE</p>
-          <h2 class="reveal">The table<br />just got <span class="heading-accent">bigger.</span></h2>
-          <div class="statement-text reveal">
-            <p>My name is Svety. I have been corporate, now I am an entrepreneur, and I will always be Bihari. You will find a lot of my ethnicity in the food I bring to you.</p>
-            <p>I love cooking, eating, talking about food and, most of all, feeding people. The Protein Drop is that same home table, made a little bigger.</p>
-            <a class="text-link" href="#svetys-kitchen">This is Svety’s Table <span>↘</span></a>
-          </div>
-          <figure class="svety-table-photo reveal">
-            <img src="./public/images/polished/client/svety-table-poster.png" alt="Svety standing beside The Protein Drop poster" />
-          </figure>
-        </div>
-      </section>
-
-      <section class="promise-strip red-panel">
-        <span class="section-no light-text">02 / THE PROTEIN PROMISE</span>
-        <div class="promise-intro reveal">
-          <p class="eyebrow light-text">NO FADS. NO PUNISHMENT.</p>
-          <h2>Made fresh.<br /><span class="heading-accent">Made with flavour.</span></h2>
-        </div>
-        <div class="promise-list">
-          <div class="promise-item"><b>01</b><span>Freshly cooked</span><i>Not pulled from a freezer.</i></div>
-          <div class="promise-item"><b>02</b><span>Small batch</span><i>Care stays visible.</i></div>
-          <div class="promise-item"><b>03</b><span>No preservatives</span><i>Just food doing what food does.</i></div>
-          <div class="promise-item"><b>04</b><span>High protein</span><i>Everyday fuel, made delicious.</i></div>
-          <div class="promise-item"><b>05</b><span>Home kitchen</span><i>Fresh from the kitchen to your home.</i></div>
-        </div>
-      </section>
-
-      <section class="featured-food cream-panel">
-        <span class="section-no">03 / WHAT'S COOKING</span>
-        <div class="food-heading reveal">
-          <p class="eyebrow">FOOD IN MOTION</p>
-          <h2>Fresh drops.<br /><span class="heading-accent">Moving through.</span></h2>
-        </div>
-        <div class="photo-river reveal" aria-label="Moving gallery of The Protein Drop dishes">
-          <div class="photo-river-track">
-            <img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="Oriental chicken with bok choy" />
-            <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="Barley feta salad" />
-            <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="Fresh chicken tikkis" />
-            <img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="Mutton curry with scallions" />
-            <img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="Tofu sesame stir fry" />
-            <img src="./public/images/polished/client/litti-chokha.jpg" alt="Litti chokha" />
-            <img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="Olive chicken salad" />
-            <img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="Sarson fish" />
-            <img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="" />
-            <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="" />
-            <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="" />
-            <img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="" />
-            <img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="" />
-            <img src="./public/images/polished/client/litti-chokha.jpg" alt="" />
-            <img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="" />
-            <img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="" />
+      <section class="protein-promise-final cream-panel">
+        <span class="section-no">03 / THE PROTEIN PROMISE</span>
+        <div class="promise-final-copy reveal">
+          <p class="eyebrow">THE PROTEIN PROMISE</p>
+          <h2>Every meal is</h2>
+          <div class="promise-checks">
+            <p><span>✓</span> Freshly Cooked. No Preservatives</p>
+            <p><span>✓</span> Small Batch</p>
+            <p><span>✓</span> High Protein</p>
+            <p><span>✓</span> Home Kitchen</p>
           </div>
         </div>
-      </section>
-
-      <section class="closing-quote cream-panel soft-closing">
-        <p class="eyebrow reveal">FROM SVETY’S KITCHEN</p>
-        <blockquote class="reveal">Protein-rich food for busy people and families. Freshly prepared. Pre-order only. Delivered with care.</blockquote>
       </section>
     </main>
 
     <footer>
       <div class="footer-top"><p>THE PROTEIN DROP</p><p>GURUGRAM, INDIA</p><a href="#top">BACK TO TOP ↑</a></div>
-      <div class="footer-links"><div><a href="./index.html#svetys-kitchen">Svety’s Table</a><a href="./why.html">Why The Protein Drop</a><a href="./menu.html">The menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
+      <div class="footer-links"><div><a href="./index.html">Svety’s Table</a><a href="./menu.html">Menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">Order</a><a href="./cart.html">Cart</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
       <div class="footer-logo">PROTEIN<br /><span>DROP.</span></div>
     </footer>
-    <script src="./src/main.js?v=tpd-menu-rail-20260801-7"></script>
+    <script type="module" src="./src/main.js?v=tpd-updated-07"></script>
   </body>
 </html>

@@ -10,8 +10,12 @@ export default defineConfig({
       input: {
         home: 'index.html',
         why: 'why.html',
+        cook: 'cook.html',
         menu: 'menu.html',
         bowl: 'bowl.html',
+        buildBowl: 'build-bowl.html',
+        cart: 'cart.html',
+        invoice: 'invoice.html',
         order: 'order.html',
       },
     },

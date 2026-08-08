@@ -9,75 +9,177 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/style.css?v=tpd-menu-rail-20260801-7" />
+    <link rel="stylesheet" href="./src/style.css?v=tpd-updated-07" />
   </head>
   <body data-page="bowl">
     <div class="cursor-glow" aria-hidden="true"></div>
     <header class="site-header" id="top">
       <a class="wordmark" href="./index.html" aria-label="The Protein Drop home">
-        <img class="wordmark-mark" src="./public/images/tpd-logo-mark.png" alt="" aria-hidden="true" />
         <span class="wordmark-live"><small>The</small><b>Protein<br />Drop</b></span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"><i></i><i></i><span>MENU</span></button>
       <nav id="primary-nav" class="main-nav" aria-label="Main navigation">
-        <a class="mobile-nav-brand" href="./index.html"><img src="./public/images/tpd-logo-full.png" alt="The Protein Drop" /></a>
-        <a class="nav-link" href="./index.html#svetys-kitchen" data-nav="home">Svety’s Table</a>
-        <a class="nav-link" href="./why.html" data-nav="why">Why The Protein Drop</a>
-        <a class="nav-link" href="./menu.html" data-nav="menu">The Menu</a>
-        <a class="nav-link" href="./bowl.html" data-nav="bowl">Build Your Own Bowl</a>
-        <a class="nav-link" href="./order.html" data-nav="order">How to order</a>
-        <a class="nav-order" href="https://wa.me/919818946902" target="_blank" rel="noreferrer">Order a drop <b>↗</b></a>
+        <a class="mobile-nav-brand" href="./index.html"><span class="wordmark-mobile"><small>The</small><b>Protein<br />Drop</b></span></a>
+        <a class="nav-link" href="./index.html" data-nav="home">Svety's Table</a>
+        <a class="nav-link" href="./menu.html" data-nav="menu">Menu</a>
+        <a class="nav-link active" href="./bowl.html" data-nav="bowl">Build Your Own Bowl</a>
+        <a class="nav-link" href="./order.html" data-nav="order">Order</a>
+        <a class="nav-link nav-cart" href="./cart.html" data-nav="cart" aria-label="Cart"><img src="./public/images/cart-icon.svg" alt="" aria-hidden="true" /><span>Cart</span><b data-cart-count>0</b></a>
       </nav>
     </header>
 
-    <main>
-      <section class="page-hero split-hero bowl-hero red-panel">
-        <div class="hero-copy reveal">
-          <p class="eyebrow light-text">BUILD YOUR OWN BOWL</p>
-          <h1>Protein,<br /><span class="heading-accent">your way.</span></h1>
-          <p class="hero-lead">Choose your protein, decide how it is cooked, add fibre or carbs, then pick the flavour mood.</p>
+    <main class="bowl-wizard-main">
+      <section class="bowl-page-hero">
+        <div class="bowl-hero-copy">
+          <span class="section-no">02 / BUILD A BOWL</span>
+          <h1>Build your own bowl with Svety</h1>
+          <p class="bowl-hero-subhead">Start with clean, satisfying protein, then choose a finish, body, and flavour that feels like a fresh plate made just for you.</p>
         </div>
-        <div class="menu-photo-row">
-          <img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="Tofu sesame stir fry" />
-          <img src="./public/images/polished/client/tandoori-chicken-salad.jpg" alt="Tandoori chicken salad" />
-          <img src="./public/images/polished/client/mixed-bean-salad.jpg" alt="Mixed bean salad" />
+        <div class="bowl-hero-card">
+          <p class="bowl-hero-card-label">How it works</p>
+          <ul class="bowl-hero-bullets">
+            <li>Select your protein first</li>
+            <li>Pick a finish that matches your hunger</li>
+            <li>Add body and flavour for the right balance</li>
+          </ul>
         </div>
       </section>
-
-      <section class="bowl cream-panel" id="build-bowl">
-        <span class="section-no">01 / BUILD YOUR OWN BOWL</span>
-        <div class="bowl-heading reveal">
-          <p class="eyebrow">PROTEIN, BUT MAKE IT CHATKAARA</p>
-          <h2>Make it<br /><span class="heading-accent">yours.</span></h2>
-          <p>Start with your protein. Then choose the way it cooks, what it sits with, and the flavour world it belongs to.</p>
-        </div>
-        <div class="bowl-builder">
-          <div class="bowl-gallery">
-            <img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="Olive chicken salad" />
-            <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="Barley feta salad" />
-            <img src="./public/images/polished/client/creamy-salad-dip.jpg" alt="Creamy salad" />
+      <div class="bowl-wizard-shell" id="build-bowl">
+        <header class="bowl-wizard-head">
+          <div class="bowl-wizard-head-copy">
+            <p class="bowl-wizard-kicker">Chatkaara by Svety · Gurgaon · Pre-order</p>
+            <h1 class="bowl-wizard-title">Build your own bowl</h1>
+            <p class="bowl-wizard-intro">Choose a protein, finish, and flavour. Every bowl is made small-batch, high-protein, and fresh to order.</p>
           </div>
-          <div class="builder-steps poster-builder">
-            <div class="builder-step selected"><span>01</span><b>Choose your protein</b><small>Paneer · Tofu · Soya · Mixed lentils · Barley · Sattu · Chicken · Fish · Eggs · Mutton</small><i>+</i></div>
-            <div class="builder-step"><span>02</span><b>Cooked your way</b><small>Salad · Curried · Stir-fried · Tandoori</small><i>+</i></div>
-            <div class="builder-step"><span>03</span><b>Add fibre or carb</b><small>Fresh veggies · Rice · Roti · Noodles</small><i>+</i></div>
-            <div class="builder-step"><span>04</span><b>Choose your flavour</b><small>Indian · Italian · Chinese · Mexican</small><i>+</i></div>
-            <a href="https://wa.me/919818946902" target="_blank" rel="noreferrer" class="builder-order">Build my bowl on WhatsApp <span>↗</span></a>
-          </div>
-        </div>
-      </section>
+          <ol class="bowl-wizard-steps" aria-label="Builder steps">
+            <li class="bowl-wizard-step is-active" data-bowl-step-indicator="1"><span>1</span> Protein</li>
+            <li class="bowl-wizard-step" data-bowl-step-indicator="2"><span>2</span> Finish</li>
+          </ol>
+        </header>
 
-      <section class="closing-quote cream-panel soft-closing">
-        <p class="eyebrow reveal">COOKED YOUR WAY</p>
-        <blockquote class="reveal">A bowl that feels like you, made fresh in Svety’s kitchen.</blockquote>
-      </section>
+        <div class="bowl-wizard-stage">
+          <!-- STEP 1: PROTEIN + PREVIEW -->
+          <section class="bowl-wizard-pane is-active" data-bowl-pane="1" aria-labelledby="bowl-step-1-title">
+            <div class="bowl-wizard-pane-grid bowl-wizard-pane-protein">
+              <section class="bowl-choice-panel bowl-choice-protein" data-bowl-group="protein">
+                <div class="bowl-panel-head">
+                  <span>01</span>
+                  <h2 id="bowl-step-1-title">Pick protein</h2>
+                </div>
+                <div class="bowl-protein-columns">
+                  <div class="bowl-protein-col bowl-protein-veg">
+                    <h3>Veg</h3>
+                    <button class="bowl-choice active" type="button" data-bowl-value="Paneer" data-bowl-category="veg">Paneer</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Tofu" data-bowl-category="veg">Tofu</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Soya" data-bowl-category="veg">Soya</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Mixed lentils" data-bowl-category="veg">Mixed Lentils</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Barley" data-bowl-category="veg">Barley</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Sattu" data-bowl-category="veg">Sattu</button>
+                  </div>
+                  <div class="bowl-protein-col bowl-protein-nonveg">
+                    <h3>Non-veg</h3>
+                    <button class="bowl-choice" type="button" data-bowl-value="Chicken" data-bowl-category="nonveg">Chicken</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Fish" data-bowl-category="nonveg">Fish</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Eggs" data-bowl-category="nonveg">Eggs</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Mutton" data-bowl-category="nonveg">Mutton</button>
+                  </div>
+                </div>
+              </section>
+
+              <div class="bowl-visual-wrap" id="bowl-visual-wrap">
+                <p class="bowl-visual-label">Live preview</p>
+                <div class="bowl-svg-container" id="bowl-svg-container" aria-label="Live bowl preview" aria-live="polite">
+                  <svg class="bowl-svg" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <ellipse cx="160" cy="232" rx="100" ry="12" fill="rgba(17,17,17,0.09)" />
+                    <path d="M44 88 Q36 100 36 118 Q36 180 100 214 Q130 228 160 228 Q190 228 220 214 Q284 180 284 118 Q284 100 276 88" stroke="#111111" stroke-width="3.5" stroke-linecap="round" fill="rgba(255,255,255,0.96)" />
+                    <ellipse cx="160" cy="88" rx="116" ry="22" stroke="#111111" stroke-width="3.5" fill="rgba(255,255,255,0.92)" />
+                    <ellipse cx="160" cy="88" rx="112" ry="18" fill="rgba(255,255,255,0.3)" stroke="none" />
+                    <path d="M60 108 Q60 190 160 208 Q260 190 260 108" fill="rgba(248,248,243,0.72)" stroke="none" />
+                  </svg>
+                  <div class="bowl-chips-layer" id="bowl-chips" aria-live="polite"></div>
+                  <div class="bowl-empty-hint" id="bowl-empty-hint">
+                    <span>Pick protein &amp; options</span>
+                    <span>to fill your bowl</span>
+                  </div>
+                </div>
+                <button class="bowl-clear-btn" id="bowl-clear-btn" type="button">Clear bowl</button>
+                <div class="bowl-preview-text" aria-live="polite">
+                  <p class="bowl-live-label">Your bowl reads</p>
+                  <strong data-bowl-preview>Paneer · Curried · Fresh veggies · Indian</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 2: STYLE + ORDER -->
+          <section class="bowl-wizard-pane" data-bowl-pane="2" aria-labelledby="bowl-step-2-title" hidden>
+            <div class="bowl-wizard-pane-grid bowl-wizard-pane-finish">
+              <div class="bowl-finish-panels">
+                <section class="bowl-choice-panel bowl-choice-cook" data-bowl-group="style">
+                  <div class="bowl-panel-head">
+                    <span>02</span>
+                    <h2 id="bowl-step-2-title">Cooked your way</h2>
+                  </div>
+                  <div class="bowl-cook-grid">
+                    <button class="bowl-choice" type="button" data-bowl-value="Salad"><b>Salad</b><small>cool, crunchy, fresh</small></button>
+                    <button class="bowl-choice active" type="button" data-bowl-value="Curried"><b>Curried</b><small>comfort masala bowl</small></button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Stir-fried"><b>Stir-fried</b><small>hot pan, bright bite</small></button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Tandoori"><b>Tandoori</b><small>smoky, charred, bold</small></button>
+                  </div>
+                </section>
+
+                <section class="bowl-choice-panel bowl-choice-base" data-bowl-group="base">
+                  <div class="bowl-panel-head">
+                    <span>03</span>
+                    <h2>Add body</h2>
+                  </div>
+                  <div class="bowl-split-options">
+                    <button class="bowl-choice active" type="button" data-bowl-value="Fresh veggies"><span>With fiber</span><b>Fresh veggies</b></button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Rice"><span>With carb</span><b>Rice</b></button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Roti"><span>With carb</span><b>Roti</b></button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Noodles"><span>With carb</span><b>Noodles</b></button>
+                  </div>
+                </section>
+
+                <section class="bowl-choice-panel bowl-choice-flavour" data-bowl-group="flavour">
+                  <div class="bowl-panel-head">
+                    <span>04</span>
+                    <h2>Choose flavour</h2>
+                  </div>
+                  <div class="bowl-flavour-row">
+                    <button class="bowl-choice active" type="button" data-bowl-value="Indian">Indian</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Italian">Italian</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Chinese">Chinese</button>
+                    <button class="bowl-choice" type="button" data-bowl-value="Mexican">Mexican</button>
+                  </div>
+                </section>
+              </div>
+
+              <aside class="bowl-cta-card">
+                <p class="bowl-cta-label">Ready to order?</p>
+                <p class="bowl-cta-sub">Svety cooks your bowl fresh. Pre-order on WhatsApp with your build below.</p>
+                <p class="bowl-cta-preview" data-bowl-preview-cta>Paneer · Curried · Fresh veggies · Indian</p>
+                <a class="bowl-whatsapp-btn" href="https://wa.me/919818946902" target="_blank" rel="noreferrer" id="bowl-whatsapp-link">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Start on WhatsApp ↗
+                </a>
+              </aside>
+            </div>
+          </section>
+        </div>
+
+        <footer class="bowl-wizard-nav">
+          <button type="button" class="bowl-wizard-back" data-bowl-goto="1" hidden>← Back</button>
+          <p class="bowl-wizard-nav-hint" data-bowl-nav-hint>Step 1 of 2 — choose your protein</p>
+          <button type="button" class="bowl-wizard-next" data-bowl-goto="2">Continue →</button>
+        </footer>
+      </div>
     </main>
 
-    <footer>
+    <footer class="bowl-compact-footer">
       <div class="footer-top"><p>THE PROTEIN DROP</p><p>BUILD YOUR OWN BOWL</p><a href="#top">BACK TO TOP ↑</a></div>
-      <div class="footer-links"><div><a href="./index.html#svetys-kitchen">Svety’s Table</a><a href="./why.html">Why The Protein Drop</a><a href="./menu.html">The menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">How to order</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
-      <div class="footer-logo">BOWL<br /><span>DROP.</span></div>
+      <div class="footer-links"><div><a href="./index.html">Svety's Table</a><a href="./menu.html">Menu</a><a href="./bowl.html">Build Your Own Bowl</a><a href="./order.html">Order</a><a href="./cart.html">Cart</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
     </footer>
-    <script src="./src/main.js?v=tpd-menu-rail-20260801-7"></script>
+    <script type="module" src="./src/main.js?v=tpd-updated-07"></script>
   </body>
 </html>
