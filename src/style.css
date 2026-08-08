@@ -3293,6 +3293,7 @@ footer {
   .belief-band,
   .menu-panel,
   .bowl,
+  .bowl-builder-section,
   .order-page,
   .closing-quote {
     padding: 98px 20px 64px;
@@ -6950,6 +6951,94 @@ body[data-page="bowl"] {
   .invoice-totals,
   .invoice-table {
     page-break-inside: avoid;
+  }
+}
+
+/* ============================================================
+   BOWL BUILDER SECTION — matches site page rhythm
+   ============================================================ */
+
+.bowl-builder-section {
+  padding-bottom: 72px;
+}
+
+.bowl-builder-section .bowl-heading {
+  margin-bottom: 8px;
+}
+
+.bowl-builder-section .bowl-builder-layout {
+  margin: 40px -3.4vw 0;
+  min-height: auto;
+  border-top: 1px solid rgba(17, 17, 17, .1);
+  border-bottom: 1px solid rgba(17, 17, 17, .1);
+  box-shadow: 0 24px 60px rgba(17, 17, 17, .06);
+}
+
+.bowl-builder-section .bowl-col-left .bowl-choice-protein {
+  border-top: 4px solid var(--red);
+}
+
+.bowl-builder-section .bowl-col-right .bowl-choice-cook {
+  border-top: 4px solid var(--ink);
+}
+
+.bowl-builder-section .bowl-col-right .bowl-choice-base {
+  border-top: 4px solid var(--red);
+}
+
+.bowl-builder-section .bowl-col-right .bowl-choice-flavour {
+  border-top: 4px solid var(--ink);
+}
+
+body[data-page="bowl"] .bowl-hero .hero-lead {
+  max-width: 560px;
+}
+
+@media (max-width: 1080px) {
+  .bowl-builder-section .bowl-builder-layout {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bowl-builder-section {
+    padding-bottom: 48px;
+  }
+
+  .bowl-builder-section .bowl-builder-layout {
+    margin-top: 28px;
+    margin-left: -20px;
+    margin-right: -20px;
+    box-shadow: none;
+  }
+
+  .bowl-builder-section .bowl-heading h2 {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+  }
+
+  .bowl-builder-section .bowl-col-center {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .bowl-builder-section .bowl-cta-card {
+    margin-top: 4px;
+  }
+
+  body[data-page="bowl"] .split-hero.bowl-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: auto;
+    padding-bottom: 48px;
+  }
+
+  body[data-page="bowl"] .bowl-hero .menu-photo-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body[data-page="bowl"] .bowl-hero .menu-photo-row img:first-child {
+    grid-column: 1 / -1;
   }
 }
 
