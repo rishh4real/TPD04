@@ -1,10 +1,25 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import SmallRebellion from './components/SmallRebellion.jsx';
+import BuildYourBowl from './pages/BuildYourBowl.jsx';
+
+document.documentElement.classList.add('js-ready');
+
+const siteOpener = document.querySelector('.site-opener');
+if (siteOpener) {
+  window.setTimeout(() => {
+    siteOpener.classList.add('site-opener-done');
+  }, 3800);
+}
 
 const smallRebellionRoot = document.querySelector('#small-rebellion-root');
 if (smallRebellionRoot) {
   createRoot(smallRebellionRoot).render(React.createElement(SmallRebellion));
+}
+
+const buildYourBowlRoot = document.querySelector('#build-your-bowl-root');
+if (buildYourBowlRoot) {
+  createRoot(buildYourBowlRoot).render(React.createElement(BuildYourBowl));
 }
 
 const defaultMenuItems = [
@@ -719,7 +734,7 @@ observeElements(document.querySelectorAll('.reveal, .promise-item, .order-steps 
 
 const page = document.body.dataset.page;
 document.querySelectorAll('.nav-link').forEach(link => {
-  if (link.dataset.nav === page) link.classList.add('active');
+  link.classList.toggle('active', link.dataset.nav === page);
   link.addEventListener('click', () => {
     document.querySelector('.main-nav')?.classList.remove('open');
     document.querySelector('.menu-toggle')?.setAttribute('aria-expanded', 'false');
@@ -1002,6 +1017,107 @@ document.querySelectorAll('[data-bowl-goto]').forEach(button => {
 });
 
 updateBowlPreview();
+
+const gramBuilder = document.querySelector('[data-gram-builder]');
+if (gramBuilder) {
+  const gramInputs = Array.from(gramBuilder.querySelectorAll('[data-gram-input]'));
+  const summaryNode = gramBuilder.querySelector('[data-gram-summary]');
+  const totalNode = gramBuilder.querySelector('[data-gram-total]');
+  const resultNode = gramBuilder.querySelector('[data-gram-result]');
+  const resultListNode = gramBuilder.querySelector('[data-gram-result-list]');
+  const bowlTagsNode = gramBuilder.querySelector('[data-gram-bowl-tags]');
+  const whatsappNode = gramBuilder.querySelector('[data-gram-whatsapp]');
+  const makeButton = gramBuilder.querySelector('[data-make-gram-bowl]');
+
+  const getGramChoice = groupName => (
+    gramBuilder.querySelector(`[data-gram-choice-group="${groupName}"] button.active`)?.dataset.gramChoice || ''
+  );
+
+  const readGramItems = () => gramInputs
+    .map(input => {
+      const amount = Math.max(0, Number(input.value) || 0);
+      return {
+        label: input.dataset.label,
+        kind: input.dataset.kind,
+        amount,
+        unit: input.dataset.unit || 'g',
+      };
+    })
+    .filter(item => item.amount > 0);
+
+  const formatGramItem = item => `${item.label} ${item.amount}${item.unit}`;
+
+  const renderGramBuilder = revealFinal => {
+    const items = readGramItems();
+    const proteins = items.filter(item => item.kind === 'protein');
+    const sides = items.filter(item => item.kind === 'side');
+    const totalGrams = items.reduce((sum, item) => item.unit === 'g' ? sum + item.amount : sum, 0);
+    const style = getGramChoice('style');
+    const flavour = getGramChoice('flavour');
+    const summaryLines = [
+      proteins.length ? `Protein: ${proteins.map(formatGramItem).join(', ')}` : 'Protein: add at least one protein amount',
+      sides.length ? `Sides: ${sides.map(formatGramItem).join(', ')}` : 'Sides: add sides if you want them',
+      `Finish: ${style} + ${flavour}`,
+    ];
+
+    if (totalNode) totalNode.textContent = `${totalGrams}g bowl`;
+    if (summaryNode) {
+      summaryNode.innerHTML = summaryLines.map(line => `<p>${escapeHtml(line)}</p>`).join('');
+    }
+
+    if (!proteins.length && makeButton) {
+      makeButton.disabled = true;
+      makeButton.textContent = 'Add protein grams';
+    } else if (makeButton) {
+      makeButton.disabled = false;
+      makeButton.textContent = 'Make my bowl';
+    }
+
+    if (!revealFinal || !resultNode) return;
+
+    const finalLines = [
+      ...proteins.map(item => ({ ...item, tone: 'protein' })),
+      ...sides.map(item => ({ ...item, tone: 'side' })),
+      { label: `${style} style`, amount: '', unit: '', tone: 'finish' },
+      { label: `${flavour} flavour`, amount: '', unit: '', tone: 'finish' },
+    ];
+    const whatsappText = `Hi, I want to build this Protein Drop bowl: ${summaryLines.join(' | ')}`;
+
+    resultNode.hidden = false;
+    if (resultListNode) {
+      resultListNode.innerHTML = summaryLines.map(line => `<p>${escapeHtml(line)}</p>`).join('');
+    }
+    if (bowlTagsNode) {
+      bowlTagsNode.innerHTML = finalLines
+        .map(item => `<span class="gram-bowl-tag gram-bowl-tag-${item.tone}">${escapeHtml(item.amount ? formatGramItem(item) : item.label)}</span>`)
+        .join('');
+    }
+    if (whatsappNode) {
+      whatsappNode.href = `https://wa.me/919818946902?text=${encodeURIComponent(whatsappText)}`;
+    }
+    resultNode.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  gramInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      resultNode.hidden = true;
+      renderGramBuilder(false);
+    });
+  });
+
+  gramBuilder.querySelectorAll('[data-gram-choice-group] button').forEach(button => {
+    button.addEventListener('click', () => {
+      const group = button.closest('[data-gram-choice-group]');
+      group?.querySelectorAll('button.active').forEach(active => active.classList.remove('active'));
+      button.classList.add('active');
+      resultNode.hidden = true;
+      renderGramBuilder(false);
+    });
+  });
+
+  makeButton?.addEventListener('click', () => renderGramBuilder(true));
+  renderGramBuilder(false);
+}
 
 document.addEventListener('mousemove', event => {
   const glow = document.querySelector('.cursor-glow');

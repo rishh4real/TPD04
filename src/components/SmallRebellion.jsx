@@ -49,16 +49,14 @@ function HighlightWord({ children, delay }) {
       variants={highlightText}
       custom={delay}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.7 }}
+      animate="show"
     >
       <motion.span
         className="small-rebellion-marker"
         variants={highlightWipe}
         custom={delay}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.7 }}
+        animate="show"
         aria-hidden="true"
       />
       <span className="small-rebellion-highlight-text">{children}</span>

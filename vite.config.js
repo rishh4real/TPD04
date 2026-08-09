@@ -14,6 +14,7 @@ export default defineConfig({
         menu: 'menu.html',
         bowl: 'bowl.html',
         buildBowl: 'build-bowl.html',
+        buildYourBowl: 'build-your-bowl/index.html',
         cart: 'cart.html',
         invoice: 'invoice.html',
         order: 'order.html',
