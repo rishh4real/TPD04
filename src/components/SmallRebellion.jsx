@@ -5,7 +5,7 @@ const titleReveal = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.3, duration: 0.9, ease: [0.76, 0, 0.24, 1] },
+    transition: { delay: 0.35, duration: 1.2, ease: [0.76, 0, 0.24, 1] },
   },
 };
 
@@ -18,11 +18,20 @@ const heroReveal = {
   }),
 };
 
+const slowTextReveal = {
+  hidden: { y: 34, opacity: 0 },
+  show: delay => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay, duration: 1.25, ease: [0.76, 0, 0.24, 1] },
+  }),
+};
+
 const heroFadeOnly = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { delay: 3.15, duration: 0.9, ease: 'easeInOut' },
+    transition: { delay: 3.65, duration: 0.9, ease: 'easeInOut' },
   },
 };
 
@@ -75,25 +84,38 @@ export default function SmallRebellion() {
       <div className="small-rebellion-hero-mask">
         <motion.p
           className="small-rebellion-hero-subline"
-          variants={heroReveal}
-          custom={1.18}
+          variants={slowTextReveal}
+          custom={1.35}
           initial="hidden"
           animate="show"
         >
           We have complicated food far too much.
         </motion.p>
       </div>
+      <motion.div
+        className="small-rebellion-count-list"
+        variants={slowTextReveal}
+        custom={1.85}
+        initial="hidden"
+        animate="show"
+        aria-label="We count it. Fear it. Earn it. Regret it."
+      >
+        <span>We count it.</span>
+        <span>Fear it.</span>
+        <span>Earn it.</span>
+        <span>Regret it.</span>
+      </motion.div>
       <div className="small-rebellion-hero-mask small-rebellion-hero-warm-mask">
         <motion.p
           className="small-rebellion-line small-rebellion-hero-warm"
           variants={heroReveal}
-          custom={1.82}
+          custom={2.55}
           initial="hidden"
           animate="show"
         >
-          Food needs to be <HighlightWord delay={2.38}>loved</HighlightWord>,{' '}
-          <HighlightWord delay={2.7}>shared</HighlightWord> &amp;{' '}
-          <HighlightWord delay={3.02}>empowered</HighlightWord>.
+          Food needs to be <HighlightWord delay={3.05}>loved</HighlightWord>,{' '}
+          <HighlightWord delay={3.34}>shared</HighlightWord> &amp;{' '}
+          <HighlightWord delay={3.63}>empowered</HighlightWord>.
         </motion.p>
       </div>
       <motion.p className="small-rebellion-hero-closing" variants={heroFadeOnly} initial="hidden" animate="show">
