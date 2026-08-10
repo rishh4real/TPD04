@@ -97,6 +97,7 @@ a { color: inherit; }
   color: var(--red);
   font: 800 25px/.84 var(--sans);
   letter-spacing: 0;
+  min-width: clamp(152px, 13.2vw, 216px);
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -108,6 +109,27 @@ a { color: inherit; }
   height: 66px;
   object-fit: contain;
   flex: 0 0 auto;
+}
+
+.wordmark img.wordmark-main-logo {
+  width: auto;
+  height: clamp(62px, 5.7vw, 82px);
+  max-width: clamp(154px, 13.2vw, 216px);
+  object-fit: contain;
+  object-position: left center;
+  transition: height .28s ease, max-width .28s ease;
+}
+
+.site-header.is-compact .wordmark img.wordmark-main-logo {
+  height: clamp(50px, 4.5vw, 60px);
+  max-width: clamp(132px, 11vw, 180px);
+}
+
+.mobile-nav-brand img.wordmark-nav-logo {
+  width: min(290px, 76vw);
+  height: auto;
+  max-height: 138px;
+  object-fit: contain;
 }
 
 .site-header > .wordmark .wordmark-full-logo {
@@ -7103,13 +7125,14 @@ body[data-page="bowl"] .bowl-hero .hero-lead {
 
 /* Final brand and page polish */
 .site-header .wordmark,
-.mobile-nav-brand .wordmark-mobile {
+.mobile-nav-brand .wordmark-mobile,
+.mobile-nav-brand .wordmark-nav-logo {
   color: var(--red);
   text-transform: uppercase;
 }
 
 .site-header .wordmark {
-  min-width: clamp(92px, 8.4vw, 138px);
+  min-width: clamp(154px, 13.2vw, 216px);
 }
 
 .wordmark-live {
@@ -7351,7 +7374,13 @@ body[data-page="invoice"] .invoice-sheet .invoice-footer p {
 
 @media (max-width: 640px) {
   .site-header .wordmark {
-    min-width: 86px;
+    min-width: clamp(138px, 43vw, 188px);
+  }
+
+  .wordmark img.wordmark-main-logo {
+    width: auto;
+    height: clamp(50px, 14vw, 58px);
+    max-width: clamp(138px, 43vw, 188px);
   }
 
   .wordmark-live small {
