@@ -22,6 +22,73 @@ if (buildYourBowlRoot) {
   createRoot(buildYourBowlRoot).render(React.createElement(BuildYourBowl));
 }
 
+document.querySelectorAll('[data-review-carousel]').forEach(carousel => {
+  const track = carousel.querySelector('[data-review-track]');
+  const cards = Array.from(track?.querySelectorAll('.home-review-card') || []);
+  const previous = carousel.querySelector('[data-review-prev]');
+  const next = carousel.querySelector('[data-review-next]');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let activeIndex = Math.min(1, Math.max(0, cards.length - 1));
+  let timer = 0;
+
+  if (!track || cards.length === 0) return;
+
+  const setActiveReview = () => {
+    cards.forEach((card, index) => {
+      card.classList.toggle('is-active', index === activeIndex);
+    });
+  };
+
+  const scrollToCard = (index, smooth = true) => {
+    activeIndex = (index + cards.length) % cards.length;
+    setActiveReview();
+    const card = cards[activeIndex];
+    const left = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+    track.scrollTo({
+      left: Math.max(0, left),
+      behavior: smooth ? 'smooth' : 'auto',
+    });
+  };
+
+  const stopAutoReviews = () => {
+    window.clearInterval(timer);
+    timer = 0;
+  };
+
+  const startAutoReviews = () => {
+    if (prefersReducedMotion.matches || timer) return;
+    timer = window.setInterval(() => scrollToCard(activeIndex + 1), 3600);
+  };
+
+  previous?.addEventListener('click', () => {
+    stopAutoReviews();
+    scrollToCard(activeIndex - 1);
+    startAutoReviews();
+  });
+
+  next?.addEventListener('click', () => {
+    stopAutoReviews();
+    scrollToCard(activeIndex + 1);
+    startAutoReviews();
+  });
+
+  carousel.addEventListener('pointerenter', stopAutoReviews);
+  carousel.addEventListener('pointerleave', startAutoReviews);
+  carousel.addEventListener('focusin', stopAutoReviews);
+  carousel.addEventListener('focusout', startAutoReviews);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoReviews();
+    } else {
+      startAutoReviews();
+    }
+  });
+
+  window.addEventListener('resize', () => scrollToCard(activeIndex, false));
+  requestAnimationFrame(() => scrollToCard(activeIndex, false));
+  startAutoReviews();
+});
+
 const defaultMenuItems = [
   {
     section: 'nonveg',
@@ -744,6 +811,17 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
+const header = document.querySelector('.site-header');
+
+if (header) {
+  const syncCompactHeader = () => {
+    header.classList.toggle('is-compact', window.scrollY > 80);
+  };
+
+  syncCompactHeader();
+  window.addEventListener('scroll', syncCompactHeader, { passive: true });
+}
+
 if (toggle && nav) {
   if (!nav.querySelector('.mobile-nav-close')) {
     const closeButton = document.createElement('button');
@@ -770,9 +848,18 @@ if (toggle && nav) {
 
   toggle.addEventListener('click', () => {
     placeMobileNav();
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    document.body.classList.toggle('nav-open', open);
+    const willOpen = !nav.classList.contains('open');
+    toggle.classList.remove('is-pulsing');
+    void toggle.offsetWidth;
+    toggle.classList.add('is-pulsing');
+    window.setTimeout(() => {
+      toggle.classList.remove('is-pulsing');
+    }, 560);
+    window.setTimeout(() => {
+      nav.classList.toggle('open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      document.body.classList.toggle('nav-open', willOpen);
+    }, 280);
   });
 
   nav.querySelectorAll('a').forEach(link => {

@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: 'index.html',
+        svety: 'svety.html',
         why: 'why.html',
         cook: 'cook.html',
         menu: 'menu.html',
