@@ -97,7 +97,7 @@ a { color: inherit; }
   color: var(--red);
   font: 800 25px/.84 var(--sans);
   letter-spacing: 0;
-  min-width: clamp(152px, 13.2vw, 216px);
+  min-width: clamp(184px, 15.4vw, 260px);
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -113,16 +113,16 @@ a { color: inherit; }
 
 .wordmark img.wordmark-main-logo {
   width: auto;
-  height: clamp(62px, 5.7vw, 82px);
-  max-width: clamp(154px, 13.2vw, 216px);
+  height: clamp(74px, 6.6vw, 98px);
+  max-width: clamp(184px, 15.4vw, 260px);
   object-fit: contain;
   object-position: left center;
   transition: height .28s ease, max-width .28s ease;
 }
 
 .site-header.is-compact .wordmark img.wordmark-main-logo {
-  height: clamp(50px, 4.5vw, 60px);
-  max-width: clamp(132px, 11vw, 180px);
+  height: clamp(58px, 5.2vw, 70px);
+  max-width: clamp(152px, 12.6vw, 206px);
 }
 
 .mobile-nav-brand img.wordmark-nav-logo {
@@ -7132,7 +7132,7 @@ body[data-page="bowl"] .bowl-hero .hero-lead {
 }
 
 .site-header .wordmark {
-  min-width: clamp(154px, 13.2vw, 216px);
+  min-width: clamp(184px, 15.4vw, 260px);
 }
 
 .wordmark-live {
@@ -7374,13 +7374,13 @@ body[data-page="invoice"] .invoice-sheet .invoice-footer p {
 
 @media (max-width: 640px) {
   .site-header .wordmark {
-    min-width: clamp(138px, 43vw, 188px);
+    min-width: clamp(158px, 50vw, 214px);
   }
 
   .wordmark img.wordmark-main-logo {
     width: auto;
-    height: clamp(50px, 14vw, 58px);
-    max-width: clamp(138px, 43vw, 188px);
+    height: clamp(58px, 16vw, 66px);
+    max-width: clamp(158px, 50vw, 214px);
   }
 
   .wordmark-live small {
