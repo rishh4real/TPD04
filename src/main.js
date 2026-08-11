@@ -467,7 +467,19 @@ const getAvailableSizes = item => item.prices
 const readCart = () => {
   try {
     const parsed = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map(item => {
+        const menuItem = menuItems.find(menuItem => menuItem.id === item.id);
+        const availableSize = menuItem
+          ? getAvailableSizes(menuItem).find(option => option.label === item.size)
+          : null;
+        const quantity = Math.max(0, Number(item.quantity) || 0);
+        return menuItem && availableSize && quantity > 0
+          ? { id: item.id, size: availableSize.label, quantity }
+          : null;
+      })
+      .filter(Boolean);
   } catch {
     return [];
   }
@@ -483,6 +495,7 @@ const updateCartCount = () => {
   document.querySelectorAll('[data-cart-count]').forEach(element => {
     element.textContent = String(count);
     element.classList.toggle('has-items', count > 0);
+    element.hidden = count <= 0;
   });
 };
 
@@ -527,8 +540,8 @@ const menuCard = (item, index) => `
         <i>protein</i>
       </div>
     </div>
-    <h3>${escapeHtml(item.name)}</h3>
-    <p>${escapeHtml(item.detail)}</p>
+    <h3 title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</h3>
+    <p title="${escapeHtml(item.detail)}">${escapeHtml(item.detail)}</p>
     <div class="price-row" aria-label="Prices">
       <span><b>300g</b>${formatPrice(item.prices[0])}</span>
       <span><b>500g</b>${formatPrice(item.prices[1])}</span>
@@ -991,7 +1004,7 @@ const fillMenuPhotoRail = (resetClones = false) => {
   const railHeight = getMenuPhotoRailHeight(rail);
   rail.style.setProperty('--menu-photo-rail-height', `${Math.round(railHeight)}px`);
 
-  const targetHeight = railHeight + Math.max(window.innerHeight * 2, 1800);
+  const targetHeight = railHeight + Math.max(lists.scrollHeight + window.innerHeight, 1800);
   let safety = 0;
 
   while (track.scrollHeight < targetHeight && safety < 12) {
@@ -1016,9 +1029,10 @@ const syncMenuPhotoRail = () => {
   if (menuRailCompactQuery.matches) return;
 
   const railTop = rail.getBoundingClientRect().top + window.scrollY;
+  const listsTop = lists.getBoundingClientRect().top + window.scrollY;
   const railHeight = getMenuPhotoRailHeight(rail);
-  const start = railTop - window.innerHeight * 0.18;
-  const end = railTop + railHeight - window.innerHeight * 0.92;
+  const start = Math.min(railTop, listsTop) - window.innerHeight * 0.18;
+  const end = listsTop + lists.scrollHeight - window.innerHeight * 0.88;
   const travel = Math.max(1, end - start);
   const progress = Math.min(1, Math.max(0, (window.scrollY - start) / travel));
   const maxShift = Math.max(0, track.scrollHeight - railHeight);
