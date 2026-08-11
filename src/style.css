@@ -11049,3 +11049,18 @@ body[data-page="svety"] .reveal {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Final submenu polish: remove the old food-photo rail completely. */
+.menu-board-layout-collection {
+  display: block !important;
+  max-width: 1240px !important;
+}
+
+.menu-board-layout-collection .moving-menu-plates {
+  display: none !important;
+}
+
+.menu-board-layout-collection .menu-lists {
+  width: 100% !important;
+  min-width: 0 !important;
+}
