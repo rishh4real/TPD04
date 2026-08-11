@@ -580,7 +580,7 @@ document.querySelectorAll('[data-whatsapp-plan]').forEach(form => {
     event.preventDefault();
     const data = new FormData(form);
     const lines = [
-      'Hi, I want to plan a Protein Drop spread.',
+      'Hi, I want to plan a home party or bulk food order.',
       `Name: ${data.get('name') || ''}`,
       `Phone: ${data.get('phone') || ''}`,
       `Email: ${data.get('email') || ''}`,

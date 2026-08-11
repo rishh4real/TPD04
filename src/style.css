@@ -9903,49 +9903,253 @@ body[data-page="order"] .order-steps h3 {
   }
 }
 
-/* Final menu split backgrounds override the broad cream-panel reset above. */
+/* Final menu polish overrides broad cream-panel/menu rules above. */
 .menu-choice-section {
+  min-height: auto;
+  padding: clamp(104px, 9vw, 145px) 6vw clamp(58px, 7vw, 92px);
   background:
     radial-gradient(circle at 86% 12%, rgba(220, 38, 38, .08), transparent 22rem),
     url("../public/images/home/tpd-doodle-pattern.svg") center top / 460px 460px,
     #fffdfa;
 }
 
+.menu-choice-section h1 {
+  max-width: min(980px, 86vw);
+  margin-bottom: clamp(26px, 3vw, 42px);
+  font-size: clamp(3rem, 6.2vw, 6.35rem);
+  line-height: .9;
+}
+
+.menu-choice-card {
+  min-height: clamp(390px, 34vw, 510px);
+}
+
 .menu-plan-section {
+  align-items: center;
+  grid-template-columns: minmax(320px, .86fr) minmax(380px, .92fr);
   background:
-    linear-gradient(135deg, rgba(220, 38, 38, .055), transparent 30%),
+    radial-gradient(circle at 12% 12%, rgba(220, 38, 38, .07), transparent 20rem),
+    linear-gradient(135deg, rgba(255, 250, 245, .8), rgba(255, 255, 255, .98)),
     #ffffff;
 }
 
-.menu-collection-head {
-  min-height: 560px;
+.menu-plan-copy {
+  display: grid;
+  align-content: center;
+}
+
+.menu-plan-copy .eyebrow {
+  color: var(--red);
+}
+
+.menu-plan-copy h2 {
+  max-width: 720px;
+}
+
+.menu-plan-photo {
+  position: relative;
+  max-width: 680px;
+  aspect-ratio: 16 / 10;
+  margin: clamp(24px, 3vw, 38px) 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(21, 17, 15, .16);
+  box-shadow: 0 26px 76px rgba(21, 17, 15, .16);
+  background: var(--ink);
+}
+
+.menu-plan-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 253, 248, .96) 0 45%, rgba(255, 253, 248, .52) 72%, rgba(255, 253, 248, .25)),
-    url("../public/images/home/flavours/protein-drop-salad.jpg") right center / cover no-repeat,
+    linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, .26)),
+    radial-gradient(circle at 30% 16%, rgba(255, 255, 255, .18), transparent 16rem);
+  pointer-events: none;
+}
+
+.menu-plan-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.98) contrast(1.05);
+}
+
+.menu-plan-form {
+  align-self: center;
+}
+
+.menu-collection-head {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  padding-right: min(46vw, 660px);
+  background:
+    radial-gradient(circle at 78% 20%, rgba(220, 38, 38, .07), transparent 22rem),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 480px 480px,
     #fffdfa;
 }
 
 .menu-collection-head-chatkaara {
   background:
-    linear-gradient(90deg, rgba(255, 253, 248, .96) 0 45%, rgba(255, 253, 248, .5) 72%, rgba(255, 253, 248, .22)),
-    url("../public/images/home/flavours/bihari.jpg") right center / cover no-repeat,
+    radial-gradient(circle at 78% 20%, rgba(220, 38, 38, .07), transparent 22rem),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 480px 480px,
     #fffdfa;
 }
 
+.menu-collection-head > a,
+.menu-collection-head > .eyebrow,
+.menu-collection-head > h1,
+.menu-collection-head > p {
+  position: relative;
+  z-index: 2;
+}
+
+.menu-hero-rail {
+  position: absolute;
+  z-index: 1;
+  right: 6vw;
+  top: 50%;
+  width: min(42vw, 620px);
+  height: clamp(360px, 42vw, 520px);
+  transform: translateY(-43%);
+  pointer-events: none;
+}
+
+.menu-hero-rail figure {
+  position: absolute;
+  width: 36%;
+  min-width: 155px;
+  max-width: 235px;
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  overflow: hidden;
+  border: 2px solid rgba(21, 17, 15, .92);
+  background: var(--ink);
+  box-shadow: 0 24px 70px rgba(21, 17, 15, .18);
+}
+
+.menu-hero-rail figure:nth-child(1) {
+  left: 0;
+  top: 18%;
+}
+
+.menu-hero-rail figure:nth-child(2) {
+  left: 31%;
+  top: 0;
+}
+
+.menu-hero-rail figure:nth-child(3) {
+  right: 0;
+  top: 22%;
+}
+
+.menu-hero-rail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.06) brightness(.92);
+}
+
+.menu-hero-rail figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, .28));
+}
+
+@media (max-width: 1180px) {
+  .menu-choice-section h1 {
+    max-width: 92vw;
+    font-size: clamp(2.7rem, 7.6vw, 5.8rem);
+  }
+
+  .menu-choice-card {
+    min-height: clamp(360px, 38vw, 470px);
+  }
+}
+
+@media (max-width: 980px) {
+  .menu-collection-head {
+    min-height: auto;
+    padding-right: 6vw;
+    padding-bottom: clamp(48px, 7vw, 76px);
+  }
+
+  .menu-hero-rail {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: min(100%, 620px);
+    height: 330px;
+    margin: 34px 0 0;
+    transform: none;
+  }
+}
+
 @media (max-width: 760px) {
+  .menu-choice-section {
+    padding-top: 88px;
+  }
+
+  .menu-choice-section h1 {
+    font-size: clamp(2.45rem, 12vw, 4rem);
+  }
+
+  .menu-choice-card {
+    min-height: 390px;
+  }
+
+  .menu-plan-section {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+  }
+
+  .menu-plan-photo {
+    aspect-ratio: 4 / 3;
+  }
+
   .menu-collection-head,
   .menu-collection-head-chatkaara {
     min-height: auto;
     background:
-      linear-gradient(180deg, rgba(255, 253, 248, .88), rgba(255, 253, 248, .98)),
-      url("../public/images/home/flavours/protein-drop-salad.jpg") center bottom / cover no-repeat,
+      radial-gradient(circle at 74% 10%, rgba(220, 38, 38, .08), transparent 16rem),
+      url("../public/images/home/tpd-doodle-pattern.svg") center top / 440px 440px,
       #fffdfa;
   }
 
   .menu-collection-head-chatkaara {
     background:
-      linear-gradient(180deg, rgba(255, 253, 248, .88), rgba(255, 253, 248, .98)),
-      url("../public/images/home/flavours/bihari.jpg") center bottom / cover no-repeat,
+      radial-gradient(circle at 74% 10%, rgba(220, 38, 38, .08), transparent 16rem),
+      url("../public/images/home/tpd-doodle-pattern.svg") center top / 440px 440px,
       #fffdfa;
+  }
+
+  .menu-hero-rail {
+    height: 280px;
+  }
+
+  .menu-hero-rail figure {
+    min-width: 125px;
+  }
+}
+
+@media (max-width: 520px) {
+  .menu-hero-rail {
+    height: 240px;
+  }
+
+  .menu-hero-rail figure {
+    width: 42%;
+    min-width: 0;
+  }
+
+  .menu-hero-rail figure:nth-child(1) {
+    left: -2%;
+  }
+
+  .menu-hero-rail figure:nth-child(2) {
+    left: 29%;
   }
 }
