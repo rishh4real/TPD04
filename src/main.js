@@ -92,29 +92,29 @@ document.querySelectorAll('[data-review-carousel]').forEach(carousel => {
 const defaultMenuItems = [
   {
     section: 'nonveg',
-    name: 'Makhamal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
-    detail: 'No binder used. Makhmal by name, melt-in-the-mouth by nature. Minced mutton mixed with onions, herbs and house spices, shaped by hand and pan-seared till beautifully browned.',
+    name: 'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
+    detail: 'No binder used. Makhmal by name, melt-in-the-mouth by nature. Minced mutton mixed with onions, herbs and our house spices, shaped by hand and pan-seared till beautifully browned. Soft, juicy and dangerously easy to keep eating.',
     protein: '35-40 g',
     prices: ['500', '1100', '2000'],
   },
   {
     section: 'nonveg',
     name: 'Ghar Ka Bihari Mutton',
-    detail: 'This is home in a bowl: mutton slow-cooked with onions, garlic and everyday desi masalas till the meat is tender and the gravy rich with flavour.',
+    detail: 'This is home in a bowl, like mutton is cooked in Bihari homes. If this is your first order, I would secretly hope you choose this. Mutton slow-cooked with onions, garlic and everyday desi masalas till the meat is tender and the gravy rich with flavour.',
     protein: '35-40 g',
     prices: ['600', '1200', '2200'],
   },
   {
     section: 'nonveg',
     name: 'Bihari Champaran Meat (Ahuna Mutton)',
-    detail: 'Our version of a handi classic with mutton, whole garlic, onions, mustard oil and robust spices sealed together and slow-cooked.',
+    detail: 'We make our own version with minimum oil and spice. The handi does the hard work here: mutton, whole garlic, onions, mustard oil and robust spices sealed together and slow-cooked. Aromatic. Rustic.',
     protein: '35-40 g',
     prices: ['-', '1200', '2200'],
   },
   {
     section: 'nonveg',
     name: 'Latpat Bhuna Meat',
-    detail: 'Not quite dry, definitely not gravy. Mutton sauteed slowly with onions, tomatoes and spices till the masala turns dark, intense and latpat.',
+    detail: 'Not quite dry, definitely not gravy. Mutton sauteed slowly with onions, tomatoes and spices till the masala turns dark, intense and latpat, clinging to every piece. Rich, robust and made for tearing into with hot rotis.',
     protein: '35-40 g',
     prices: ['-', '1200', '2200'],
   },
@@ -128,42 +128,42 @@ const defaultMenuItems = [
   {
     section: 'nonveg',
     name: 'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
-    detail: 'Chicken cooked slow with onions, tomatoes, garlic and desi masalas. Proper ghar ka khana.',
+    detail: 'The chicken you would expect at a Bihari home, not a restaurant. Chicken cooked slow in onions, tomatoes, garlic and our desi masalas till everything comes together in a thick, clingy gravy. Rustic, comforting and unapologetically ghar ka khana.',
     protein: '35-40 g',
     prices: ['500', '950', '1800'],
   },
   {
     section: 'nonveg',
     name: 'Deconstructed Butter Chicken (without Butter) Boneless',
-    detail: 'Tender boneless chicken with tangy tomato base and creamy hung curd dressing.',
+    detail: 'Minus the butter overload. Tender boneless chicken slivers with a rich, tangy tomato base and creamy hung curd dressing - all the familiar flavours, just lighter, fresher and without swimming in butter.',
     protein: '35-40 g',
     prices: ['500', '950', '1800'],
   },
   {
     section: 'nonveg',
     name: 'Murg Safeda',
-    detail: 'Tender chicken in a delicate white gravy of hung curd, cashews and gentle spices.',
+    detail: 'Not every chicken needs to be red and fiery. Tender chicken cooked in a delicate white gravy of hung curd, cashews and gentle spices.',
     protein: '35-40 g',
     prices: ['500', '950', '1800'],
   },
   {
     section: 'nonveg',
     name: 'Black Sesame Chicken',
-    detail: 'Nutty, savoury chicken tossed with toasted black sesame, garlic and green chillies.',
+    detail: 'A recipe that wandered east, but found a permanent home in my kitchen. Nutty, savoury and a little unexpected. Tender chicken tossed with toasted black sesame, garlic and some green chillies.',
     protein: '35-40 g',
     prices: ['500', '950', '1800'],
   },
   {
     section: 'nonveg',
     name: 'Tawa Chicken',
-    detail: 'Fresh spices, hot tawa, onions, tomatoes, green chillies and punchy Indian spices.',
+    detail: 'Fresh spices, a hot tawa and no unnecessary fuss. Onions, tomatoes, green chillies and punchy Indian spices. Can be served as an appetiser or the main course.',
     protein: '35-40 g',
     prices: ['500', '950', '1800'],
   },
   {
     section: 'nonveg',
     name: 'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
-    detail: 'Juicy minced chicken with herbs and spices, pan-seared till golden.',
+    detail: 'Who said tikkis need potatoes? Juicy minced chicken, seasoned with herbs and spices, shaped by hand and pan-seared till golden. Protein-packed little bites that work as a snack, a side, or straight out of the box.',
     protein: '35-40 g',
     prices: ['500', '850', '1600'],
   },
@@ -177,7 +177,7 @@ const defaultMenuItems = [
   {
     section: 'nonveg',
     name: 'Chicken Bharta Bihari Style (Boneless)',
-    detail: 'Boneless chicken shredded and cooked down with onions, tomatoes, garlic and green chillies.',
+    detail: 'Bharta, but make it chicken. Boneless chicken shredded and cooked down with onions, tomatoes, garlic and green chillies. Tasted it the first time in Assam and fell in love with it.',
     protein: '35-40 g',
     prices: ['500', '850', '1600'],
   },
@@ -226,14 +226,14 @@ const defaultMenuItems = [
   {
     section: 'nonveg',
     name: 'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
-    detail: 'Rohu cooked in punchy mustard gravy with garlic, tomatoes and green chillies.',
+    detail: 'If you grew up with mustard fish, this will feel like coming home. Rohu cooked in a punchy mustard gravy with garlic, tomatoes and green chillies - sharp, rustic and unmistakably Bihari. The kind of curry that demands a little extra rice.',
     protein: '30-35 g',
     prices: ['500', '900', '1750'],
   },
   {
     section: 'nonveg',
     name: 'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
-    detail: 'Flaky fish mixed with herbs, aromatics and spices, shaped by hand and pan-seared.',
+    detail: 'Flaky fish mixed with herbs, aromatics and spices, some bell pepper and onion, shaped by hand and pan-seared.',
     protein: '30-35 g',
     prices: ['550', '1000', '1950'],
   },
@@ -352,18 +352,84 @@ const defaultMenuItems = [
   {
     section: 'veg',
     name: 'Litti Chokha (6 / 12)',
-    detail: 'Sattu-stuffed littis roasted till browned, served with smoky rustic chokha.',
+    detail: 'Bihar OG comfort food needs no reinvention. Sattu-stuffed littis roasted till beautifully browned, served with smoky, rustic chokha. Earthy, hearty and best eaten with your hands.',
     protein: '15-20 g*',
     prices: ['600', '1000', '-'],
   },
   {
     section: 'veg',
     name: 'Sattu Paratha (4 pcs)',
-    detail: 'Parathas stuffed with roasted chana sattu, onions, herbs and Bihari spices.',
+    detail: 'Parathas generously stuffed with roasted chana sattu, onions, herbs, spices and that essential Bihari hit of flavour. Rustic, filling and the kind of food that tastes like home.',
     protein: '25-30 g*',
     prices: ['350', '-', '-'],
   },
+  {
+    section: 'veg',
+    name: 'Matar Poori (4 pcs)',
+    detail: 'Bestseller. Needs no intro.',
+    protein: '-',
+    prices: ['350', '-', '-'],
+  },
+  {
+    section: 'veg',
+    name: 'Bihari Vegetables Pachranga',
+    detail: 'A medley of vegetables - mooli, baingan, sem if available, aalu and gobhi in panch phoran and hing. East Indian flavours that pop.',
+    protein: '-',
+    prices: ['-', '500', '950'],
+  },
+  {
+    section: 'veg',
+    name: 'Sukha Ghiya Dal',
+    detail: 'Ghiya and chana dal together, tempered with tez patta, hing, sukha red chilli, garlic and dhaniya. Dryish.',
+    protein: '-',
+    prices: ['-', '450', '800'],
+  },
+  {
+    section: 'veg',
+    name: 'Sarson Bhindi',
+    detail: 'The awesome kick of mustard takes our favourite veggie up a notch.',
+    protein: '-',
+    prices: ['-', '450', '800'],
+  },
+  {
+    section: 'veg',
+    name: 'Nani Wale Aaloo Dahi Curry',
+    detail: 'My Nani recipe. Delicate tasting and cool on the tummy. Some eastern chaunk with kadi patta.',
+    protein: '-',
+    prices: ['-', '450', '800'],
+  },
+  {
+    section: 'veg',
+    name: 'Aaloo Achaar',
+    detail: 'Potato pickle tossed with crushed garlic, green chillies, achaar masala, sarson and mustard oil. Had like a veggie with main character energy.',
+    protein: '-',
+    prices: ['-', '450', '800'],
+  },
 ];
+
+const chatkaaraItemNames = new Set([
+  'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Ghar Ka Bihari Mutton',
+  'Bihari Champaran Meat (Ahuna Mutton)',
+  'Latpat Bhuna Meat',
+  'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+  'Deconstructed Butter Chicken (without Butter) Boneless',
+  'Murg Safeda',
+  'Black Sesame Chicken',
+  'Tawa Chicken',
+  'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Chicken Bharta Bihari Style (Boneless)',
+  'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+  'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
+  'Litti Chokha (6 / 12)',
+  'Sattu Paratha (4 pcs)',
+  'Matar Poori (4 pcs)',
+  'Bihari Vegetables Pachranga',
+  'Sukha Ghiya Dal',
+  'Sarson Bhindi',
+  'Nani Wale Aaloo Dahi Curry',
+  'Aaloo Achaar',
+]);
 
 const slugify = value => value
   .toLowerCase()
@@ -493,13 +559,37 @@ const observer = new IntersectionObserver(entries => {
 
 const nonVegGrid = document.querySelector('#nonVegMenu');
 const vegGrid = document.querySelector('#vegMenu');
+const menuCollection = document.body.dataset.menuCollection;
+const visibleMenuItems = menuCollection === 'chatkaara'
+  ? menuItems.filter(item => chatkaaraItemNames.has(item.name))
+  : menuCollection === 'protein'
+    ? menuItems.filter(item => !chatkaaraItemNames.has(item.name))
+    : menuItems;
 
 if (nonVegGrid && vegGrid) {
-  const nonVegItems = menuItems.filter(item => item.section === 'nonveg');
-  const vegItems = menuItems.filter(item => item.section === 'veg');
+  const nonVegItems = visibleMenuItems.filter(item => item.section === 'nonveg');
+  const vegItems = visibleMenuItems.filter(item => item.section === 'veg');
   nonVegGrid.innerHTML = nonVegItems.map(menuCard).join('');
   vegGrid.innerHTML = vegItems.map(menuCard).join('');
+  document.querySelector('[data-dish-section="nonveg"]')?.toggleAttribute('hidden', nonVegItems.length === 0);
+  document.querySelector('[data-dish-section="veg"]')?.toggleAttribute('hidden', vegItems.length === 0);
 }
+
+document.querySelectorAll('[data-whatsapp-plan]').forEach(form => {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const lines = [
+      'Hi, I want to plan a Protein Drop spread.',
+      `Name: ${data.get('name') || ''}`,
+      `Phone: ${data.get('phone') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Message: ${data.get('message') || ''}`,
+    ];
+    const text = lines.join('\n');
+    window.open(`https://wa.me/919818946902?text=${encodeURIComponent(text)}`, '_blank', 'noreferrer');
+  });
+});
 
 document.addEventListener('click', event => {
   const quantityButton = event.target.closest('[data-menu-qty]');

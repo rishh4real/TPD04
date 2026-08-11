@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/style.css?v=tpd-about-video-44" />
+    <link rel="stylesheet" href="./src/style.css?v=tpd-menu-split-45" />
   </head>
   <body data-page="menu">
     <div class="cursor-glow" aria-hidden="true"></div>
@@ -28,96 +28,48 @@
     </header>
 
     <main>
-      <section class="page-hero menu-hero cream-panel light-menu-hero">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">THE MENU</p>
-          <h1>Every recipe has earned its place on this menu.</h1>
-          <p class="hero-lead">Some came from my childhood, some from friends, some from years of experimenting.</p>
-          <p class="hero-lead">But every single one is cooked exactly the way I’d serve it at my own table.</p>
-        </div>
-        <div class="menu-photo-row">
-          <img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="Chicken tikkis" />
-          <img src="./public/images/polished/client/barley-feta-salad.jpg" alt="Barley feta salad" />
-          <img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="Mutton curry" />
+      <section class="menu-choice-section cream-panel" aria-labelledby="menu-choice-title">
+        <p class="eyebrow reveal">Choose your menu</p>
+        <h1 id="menu-choice-title" class="reveal">Two kitchens. One Protein Drop table.</h1>
+        <div class="menu-choice-grid">
+          <a class="menu-choice-card reveal" href="./protein-drop-menu.html">
+            <img src="./public/images/home/flavours/protein-drop-salad.jpg" alt="Protein Drop salad with pomegranate, feta, herbs, and pecans" />
+            <span>The Protein Drop</span>
+            <b>High-protein salads, bowls, grills, paneer, tofu, chicken, fish and more.</b>
+          </a>
+          <a class="menu-choice-card reveal" href="./chatkaara-bihari-menu.html">
+            <img src="./public/images/home/flavours/bihari.jpg" alt="Bihari curry with rich gravy and herbs" />
+            <span>Chatkaara - The Bihari Experience</span>
+            <b>Ghar ka Bihari mutton, Champaran meat, sarson fish, litti chokha and sattu plates.</b>
+          </a>
         </div>
       </section>
 
-      <section class="menu-panel menu-board cream-panel">
-        <span class="section-no">01 / CURRENT DROPS</span>
-        <div class="menu-heading reveal">
-          <p class="eyebrow">READ THE TABLE</p>
-          <h2>What's<br /><span class="heading-accent">cooking?</span></h2>
+      <section class="menu-plan-section cream-panel" id="plan-protein-spread" aria-labelledby="plan-spread-title">
+        <div class="menu-plan-copy reveal">
+          <p class="eyebrow">Plan your protein spread</p>
+          <h2 id="plan-spread-title">Tell us the vibe. We will take it to WhatsApp.</h2>
+          <p>Share your name, phone, email and what you want to plan. The message opens directly in WhatsApp so we can confirm the fresh batch.</p>
         </div>
-        <div class="menu-category-rail reveal" aria-label="Menu category tabs">
-          <a href="#nonVegMenu">Non-Vegetarian</a>
-          <a href="#vegMenu">Vegetarian</a>
-        </div>
-        <div class="menu-board-layout">
-          <aside class="menu-plates moving-menu-plates" aria-label="Moving menu dish photos">
-            <div class="menu-plates-track">
-              <figure><img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="Chicken tikkis" /></figure>
-              <figure><img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="Oriental chicken with greens" /></figure>
-              <figure><img src="./public/images/polished/client/tandoori-chicken-salad.jpg" alt="Tandoori chicken salad" /></figure>
-              <figure><img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="Olive chicken salad" /></figure>
-              <figure><img src="./public/images/polished/client/mutton-masala-closeup.jpg" alt="Mutton masala" /></figure>
-              <figure><img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="Mutton curry with scallions" /></figure>
-              <figure><img src="./public/images/polished/client/meat-greens-stir-fry.jpg" alt="Meat and greens stir fry" /></figure>
-              <figure><img src="./public/images/polished/client/meat-pepper-stir-fry.jpg" alt="Meat pepper stir fry" /></figure>
-              <figure><img src="./public/images/polished/client/tawa-fish-fry.jpg" alt="Tawa fish fry" /></figure>
-              <figure><img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="Sarson fish" /></figure>
-              <figure><img src="./public/images/polished/client/creamy-fish-green-curry.jpg" alt="Creamy fish curry" /></figure>
-              <figure><img src="./public/images/polished/client/fish-tikkis.jpg" alt="Fish tikkis" /></figure>
-              <figure><img src="./public/images/polished/client/kebab-slider-plate.jpg" alt="Kebab slider plate" /></figure>
-              <figure><img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="Tofu sesame stir fry" /></figure>
-              <figure><img src="./public/images/polished/client/barley-feta-salad.jpg" alt="Barley feta salad" /></figure>
-              <figure><img src="./public/images/polished/client/mixed-bean-salad.jpg" alt="Mixed bean salad" /></figure>
-              <figure><img src="./public/images/polished/client/creamy-salad-dip.jpg" alt="Creamy salad dip" /></figure>
-              <figure><img src="./public/images/polished/client/litti-chokha.jpg" alt="Litti chokha" /></figure>
-              <figure><img src="./public/images/polished/client/chicken-tikkis-fresh.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/oriental-chicken-bok-choy.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/tandoori-chicken-salad.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/olive-chicken-salad.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/mutton-masala-closeup.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/mutton-scallion-curry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/meat-greens-stir-fry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/meat-pepper-stir-fry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/tawa-fish-fry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/sarson-fish-yellow.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/creamy-fish-green-curry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/fish-tikkis.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/kebab-slider-plate.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/tofu-sesame-stir-fry.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/barley-feta-salad.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/mixed-bean-salad.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/creamy-salad-dip.jpg" alt="" /></figure>
-              <figure><img src="./public/images/polished/client/litti-chokha.jpg" alt="" /></figure>
-            </div>
-          </aside>
-          <div class="menu-lists">
-            <section class="dish-section dish-section-nonveg">
-              <div class="dish-section-head">
-                <span>01</span>
-                <h3>Non-Vegetarian</h3>
-                <p>Chicken, mutton and fish drops from a small-batch kitchen.</p>
-              </div>
-              <div class="menu-grid menu-grid-board" id="nonVegMenu"></div>
-            </section>
-            <section class="dish-section dish-section-veg">
-              <div class="dish-section-head">
-                <span>02</span>
-                <h3>Vegetarian</h3>
-                <p>Paneer, tofu, soya, salads and Bihari comfort plates.</p>
-              </div>
-              <div class="menu-grid menu-grid-board" id="vegMenu"></div>
-            </section>
-          </div>
-        </div>
-        <p class="menu-note">Protein values are approximate for 200g raw. Prices are listed for 300g, 500g and 1kg. A dash means that size is not listed yet.</p>
-      </section>
-
-      <section class="closing-quote cream-panel soft-closing">
-        <p class="eyebrow reveal">PRE-ORDER ONLY</p>
-        <blockquote class="reveal">Browse the menu, pick your pack size, and message on WhatsApp. Svety will confirm the fresh batch.</blockquote>
+        <form class="menu-plan-form reveal" data-whatsapp-plan>
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Phone number</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Tell us menu, date, people, preferences..." required></textarea>
+          </label>
+          <button type="submit">Connect on WhatsApp</button>
+        </form>
       </section>
     </main>
 
@@ -126,6 +78,6 @@
       <div class="footer-links"><div><a href="./index.html">Home</a><a href="./svety.html">Svety’s Table</a><a href="./menu.html">Menu</a><a href="./cart.html">Cart</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
       <div class="footer-logo">MENU<br /><span>DROP.</span></div>
     </footer>
-    <script type="module" src="./src/main.js?v=tpd-about-video-44"></script>
+    <script type="module" src="./src/main.js?v=tpd-menu-split-45"></script>
   </body>
 </html>

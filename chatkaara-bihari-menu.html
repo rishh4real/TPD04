@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Protein Drop - Why The Protein Drop</title>
+    <title>The Protein Drop - Chatkaara Bihari Menu</title>
     <link rel="icon" type="image/png" href="./public/images/tpd-logo-mark.png" />
     <link rel="apple-touch-icon" href="./public/images/tpd-logo-mark.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./src/style.css?v=tpd-menu-split-45" />
   </head>
-  <body data-page="why">
+  <body data-page="menu" data-menu-collection="chatkaara">
     <div class="cursor-glow" aria-hidden="true"></div>
     <header class="site-header" id="top">
       <a class="wordmark" href="./index.html" aria-label="The Protein Drop home">
@@ -28,50 +28,45 @@
     </header>
 
     <main>
-      <section class="page-hero split-hero text-only-hero red-panel">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">WHY THE PROTEIN DROP?</p>
-          <h1>A small<br /><span class="heading-accent">rebellion.</span></h1>
-          <p class="hero-lead">We have complicated food far too much. We count it. Fear it. Earn it. Regret it.</p>
-        </div>
+      <section class="menu-collection-head menu-collection-head-chatkaara cream-panel">
+        <a href="./menu.html">All menus</a>
+        <p class="eyebrow">Chatkaara - The Bihari Experience</p>
+        <h1>Bihari flavour, full ghar ka energy.</h1>
+        <p>Ghar ka mutton, Champaran meat, sarson fish, litti chokha, sattu and desi comfort plates.</p>
       </section>
 
-      <section class="copy-page why-manifesto cream-panel">
-        <span class="section-no">01 / THE BELIEF</span>
-        <div class="copy-columns">
-          <h2 class="reveal">Food needs to be loved, shared and empowered.</h2>
-          <div class="long-copy reveal">
-            <p>TPD is our small rebellion against all of that. Food should not arrive with a lecture, a spreadsheet, or an apology.</p>
-            <p>So, we make food from a position of love and care and ensure it is nourishing enough in terms of protein.</p>
-            <p>Good food and good health should not sit at opposite ends of the table. They should arrive together, hot, generous and easy to share.</p>
-          </div>
+      <section class="menu-panel menu-board menu-collection-board cream-panel">
+        <div class="menu-category-rail reveal" aria-label="Menu category tabs">
+          <a href="#nonVegMenu">Non-Vegetarian</a>
+          <a href="#vegMenu">Vegetarian</a>
+          <a href="./menu.html#plan-protein-spread">Plan your protein spread</a>
         </div>
-      </section>
-
-      <section class="belief-band editorial-belief text-only-belief cream-panel">
-        <div class="belief-copy reveal">
-          <p class="eyebrow">THE REAL DROP</p>
-          <h2>Health food<br /><span class="heading-accent">without the lecture.</span></h2>
-          <p>Your chicken can be smoky one day and fiery the next. Your fish can remind you of home. Your salad should never feel like an apology.</p>
-          <div class="belief-proof" aria-label="The Protein Drop proof points">
-            <div><b>01</b><span>Big flavour</span></div>
-            <div><b>02</b><span>Real protein</span></div>
-            <div><b>03</b><span>No guilt</span></div>
-          </div>
-          <a class="text-link" href="./menu.html">Go to the menu <span>↘</span></a>
+        <div class="menu-lists">
+          <section class="dish-section dish-section-nonveg" data-dish-section="nonveg">
+            <div class="dish-section-head">
+              <span>01</span>
+              <h3>Non-Vegetarian</h3>
+              <p>Ghar ka mutton, chicken and fish with Bihari-style masala.</p>
+            </div>
+            <div class="menu-grid menu-grid-board" id="nonVegMenu"></div>
+          </section>
+          <section class="dish-section dish-section-veg" data-dish-section="veg">
+            <div class="dish-section-head">
+              <span>02</span>
+              <h3>Vegetarian</h3>
+              <p>Litti chokha, sattu, dal and desi comfort plates.</p>
+            </div>
+            <div class="menu-grid menu-grid-board" id="vegMenu"></div>
+          </section>
         </div>
-      </section>
-
-      <section class="closing-quote red-panel">
-        <p class="eyebrow light-text reveal">FROM LOVE AND CARE</p>
-        <blockquote class="reveal">Good food and good health do not need to live at opposite ends of the table.</blockquote>
+        <p class="menu-note">Prices are listed for 300g, 500g and 1kg. A dash means that size is not listed yet.</p>
       </section>
     </main>
 
     <footer>
-      <div class="footer-top"><p>THE PROTEIN DROP</p><p>WHY TPD?</p><a href="#top">BACK TO TOP ↑</a></div>
+      <div class="footer-top"><p>THE PROTEIN DROP</p><p>CHATKAARA MENU</p><a href="#top">BACK TO TOP ↑</a></div>
       <div class="footer-links"><div><a href="./index.html">Home</a><a href="./svety.html">Svety’s Table</a><a href="./menu.html">Menu</a><a href="./cart.html">Cart</a></div><div><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/919818946902" target="_blank" rel="noreferrer">WhatsApp: 9818946902 ↗</a></div><p>© 2026 THE PROTEIN DROP<br />MADE WITH LOVE, NOT PRESERVATIVES.</p></div>
-      <div class="footer-logo">WHY<br /><span>TPD?</span></div>
+      <div class="footer-logo">BIHARI<br /><span>DROP.</span></div>
     </footer>
     <script type="module" src="./src/main.js?v=tpd-menu-split-45"></script>
   </body>

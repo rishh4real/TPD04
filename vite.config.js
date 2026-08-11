@@ -13,6 +13,8 @@ export default defineConfig({
         why: 'why.html',
         cook: 'cook.html',
         menu: 'menu.html',
+        proteinDropMenu: 'protein-drop-menu.html',
+        chatkaaraBihariMenu: 'chatkaara-bihari-menu.html',
         bowl: 'bowl.html',
         buildBowl: 'build-bowl.html',
         buildYourBowl: 'build-your-bowl/index.html',
