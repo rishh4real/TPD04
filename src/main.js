@@ -578,14 +578,53 @@ const visibleMenuItems = menuCollection === 'chatkaara'
   : menuCollection === 'protein'
     ? menuItems.filter(item => !chatkaaraItemNames.has(item.name))
     : menuItems;
+const menuFamily = item => chatkaaraItemNames.has(item.name) ? 'Chatkaara - The Bihari Experience' : 'The Protein Drop';
 
 if (nonVegGrid && vegGrid) {
-  const nonVegItems = visibleMenuItems.filter(item => item.section === 'nonveg');
-  const vegItems = visibleMenuItems.filter(item => item.section === 'veg');
-  nonVegGrid.innerHTML = nonVegItems.map(menuCard).join('');
-  vegGrid.innerHTML = vegItems.map(menuCard).join('');
-  document.querySelector('[data-dish-section="nonveg"]')?.toggleAttribute('hidden', nonVegItems.length === 0);
-  document.querySelector('[data-dish-section="veg"]')?.toggleAttribute('hidden', vegItems.length === 0);
+  const searchInput = document.querySelector('[data-menu-search]');
+  const searchClear = document.querySelector('[data-menu-search-clear]');
+  const searchStatus = document.querySelector('[data-menu-search-status]');
+  const nonVegSection = document.querySelector('[data-dish-section="nonveg"]');
+  const vegSection = document.querySelector('[data-dish-section="veg"]');
+
+  const itemMatchesSearch = (item, query) => {
+    if (!query) return true;
+    const searchable = [
+      item.name,
+      item.detail,
+      item.section === 'veg' ? 'vegetarian veg' : 'non vegetarian nonveg non-veg',
+      item.protein,
+      menuFamily(item),
+      ...getAvailableSizes(item).map(option => `${option.label} ${option.price}`),
+    ].join(' ').toLowerCase();
+    return query.split(/\s+/).filter(Boolean).every(term => searchable.includes(term));
+  };
+
+  const renderMenuItems = () => {
+    const query = (searchInput?.value || '').trim().toLowerCase();
+    const filteredItems = visibleMenuItems.filter(item => itemMatchesSearch(item, query));
+    const nonVegItems = filteredItems.filter(item => item.section === 'nonveg');
+    const vegItems = filteredItems.filter(item => item.section === 'veg');
+    nonVegGrid.innerHTML = nonVegItems.map(menuCard).join('');
+    vegGrid.innerHTML = vegItems.map(menuCard).join('');
+    nonVegSection?.toggleAttribute('hidden', nonVegItems.length === 0);
+    vegSection?.toggleAttribute('hidden', vegItems.length === 0);
+    searchClear?.toggleAttribute('hidden', !query);
+    if (searchStatus) {
+      searchStatus.textContent = query
+        ? `${filteredItems.length} dish${filteredItems.length === 1 ? '' : 'es'} found`
+        : `${visibleMenuItems.length} dishes`;
+    }
+    observeElements(document.querySelectorAll('.menu-card'));
+  };
+
+  renderMenuItems();
+  searchInput?.addEventListener('input', renderMenuItems);
+  searchClear?.addEventListener('click', () => {
+    searchInput.value = '';
+    renderMenuItems();
+    searchInput.focus();
+  });
 }
 
 document.querySelectorAll('[data-whatsapp-plan]').forEach(form => {
@@ -773,8 +812,6 @@ const proteinRange = value => {
     max: numbers.length ? Math.max(...numbers) : 0,
   };
 };
-
-const menuFamily = item => chatkaaraItemNames.has(item.name) ? 'Chatkaara - The Bihari Experience' : 'The Protein Drop';
 
 const formatBotItem = item => {
   const sizes = getAvailableSizes(item)
