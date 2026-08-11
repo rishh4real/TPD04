@@ -823,15 +823,6 @@ if (header) {
 }
 
 if (toggle && nav) {
-  if (!nav.querySelector('.mobile-nav-close')) {
-    const closeButton = document.createElement('button');
-    closeButton.className = 'mobile-nav-close';
-    closeButton.type = 'button';
-    closeButton.setAttribute('aria-label', 'Close menu');
-    closeButton.innerHTML = '<span></span><span></span>';
-    nav.prepend(closeButton);
-  }
-
   const navHome = nav.parentElement;
   const mobileQuery = window.matchMedia('(max-width: 480px)');
   const placeMobileNav = () => {
@@ -870,11 +861,6 @@ if (toggle && nav) {
     });
   });
 
-  nav.querySelector('.mobile-nav-close')?.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('nav-open');
-  });
 }
 
 const menuRailCompactQuery = window.matchMedia('(max-width: 760px)');

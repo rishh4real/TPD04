@@ -3171,7 +3171,7 @@ footer {
     }
 
     .main-nav.open .mobile-nav-close {
-      display: grid;
+      display: none !important;
       place-items: center;
       position: fixed;
       top: 22px;
@@ -9521,7 +9521,7 @@ html body .site-header.is-compact button.menu-toggle[aria-expanded="true"] .hamb
 
 html body .main-nav.open .mobile-nav-close,
 html body .site-header .main-nav.open .mobile-nav-close {
-  display: grid !important;
+  display: none !important;
   place-items: center !important;
   position: fixed !important;
   top: 28px !important;
