@@ -10683,6 +10683,21 @@ body[data-page="menu"] section {
   max-width: 100%;
 }
 
+html {
+  scroll-padding-top: 126px;
+}
+
+body[data-menu-collection] .menu-collection-head,
+body[data-menu-collection] .menu-collection-head-chatkaara {
+  padding-top: clamp(126px, 9vw, 154px) !important;
+}
+
+body[data-menu-collection] .dish-section,
+body[data-menu-collection] #nonVegMenu,
+body[data-menu-collection] #vegMenu {
+  scroll-margin-top: 126px;
+}
+
 body[data-page="menu"] .reveal,
 body[data-page="svety"] .reveal {
   opacity: 1 !important;
@@ -11095,6 +11110,22 @@ body[data-page="svety"] .reveal {
   min-width: 0 !important;
 }
 
+body[data-menu-collection] .dish-section-head {
+  grid-template-columns: 48px minmax(310px, 460px) minmax(260px, 1fr) !important;
+  gap: clamp(22px, 3vw, 48px) !important;
+  align-items: end !important;
+}
+
+body[data-menu-collection] .dish-section-head h3 {
+  max-width: 460px !important;
+}
+
+body[data-menu-collection] .dish-section-head p {
+  max-width: 420px !important;
+  justify-self: start !important;
+  padding-bottom: 8px !important;
+}
+
 @media (max-width: 980px) {
   .menu-board-layout-collection {
     display: block !important;
@@ -11126,5 +11157,304 @@ body[data-page="svety"] .reveal {
 @media (max-width: 620px) {
   .menu-board-layout-collection .moving-menu-plates {
     display: none !important;
+  }
+
+  body[data-menu-collection] .dish-section-head {
+    display: block !important;
+  }
+
+  body[data-menu-collection] .dish-section-head h3,
+  body[data-menu-collection] .dish-section-head p {
+    max-width: 100% !important;
+  }
+}
+
+body[data-page="menu"]:not([data-menu-collection]) .menu-choice-section {
+  padding-top: clamp(96px, 7vw, 118px) !important;
+  padding-bottom: clamp(30px, 3vw, 46px) !important;
+}
+
+body[data-page="menu"]:not([data-menu-collection]) .menu-choice-section > .eyebrow {
+  display: block !important;
+  margin: 0 0 clamp(10px, 1vw, 14px) !important;
+}
+
+@media (max-width: 760px) {
+  body[data-page="menu"]:not([data-menu-collection]) .menu-choice-section {
+    padding: 104px 18px 30px !important;
+  }
+}
+
+.tpd-bot {
+  position: fixed;
+  right: 18px;
+  bottom: 22px;
+  z-index: 2147483200;
+  font-family: var(--sans);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+}
+
+.tpd-bot:not(.is-in-menu),
+.tpd-bot.is-in-footer {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px);
+  visibility: hidden;
+}
+
+.tpd-bot-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 124px;
+  height: 46px;
+  padding: 6px 12px;
+  border: 1px solid rgba(21, 17, 15, .16);
+  border-radius: 999px;
+  background: #17110f;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 18px 46px rgba(21, 17, 15, .22);
+  transform-origin: right bottom;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.tpd-bot-toggle:hover {
+  transform: translateY(-2px);
+  background: #221713;
+  box-shadow: 0 22px 58px rgba(21, 17, 15, .26);
+}
+
+.tpd-bot-toggle::after {
+  display: none;
+}
+
+.tpd-bot-toggle img {
+  display: none !important;
+}
+
+.tpd-bot-mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font: 900 11px/1 var(--mono);
+  letter-spacing: 0;
+}
+
+.tpd-bot-label {
+  color: #fff;
+  font: 900 10px/.95 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tpd-bot-toggle b {
+  display: none;
+}
+
+.tpd-bot-panel {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  width: min(390px, calc(100vw - 28px));
+  overflow: hidden;
+  border: 1px solid rgba(21, 17, 15, .14);
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 28px 90px rgba(21, 17, 15, .24);
+}
+
+.tpd-bot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #1b0a08;
+  color: #fff;
+}
+
+.tpd-bot-head span {
+  display: block;
+  color: rgba(255, 255, 255, .58);
+  font: 900 9px/1 var(--mono);
+  letter-spacing: .12em;
+}
+
+.tpd-bot-head h2 {
+  margin: 4px 0 0;
+  font: 800 1.35rem/1 var(--sans);
+}
+
+.tpd-bot-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font: 400 25px/1 var(--sans);
+}
+
+.tpd-bot-messages {
+  display: grid;
+  gap: 10px;
+  max-height: min(46vh, 390px);
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.tpd-bot-message {
+  max-width: 92%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: rgba(21, 17, 15, .82);
+  font: 700 .86rem/1.4 var(--sans);
+}
+
+.tpd-bot-message p {
+  margin: 0 0 8px;
+}
+
+.tpd-bot-message p:last-child {
+  margin-bottom: 0;
+}
+
+.tpd-bot-message.bot {
+  justify-self: start;
+  background: #fff;
+  border: 1px solid rgba(21, 17, 15, .1);
+}
+
+.tpd-bot-message.user {
+  justify-self: end;
+  background: rgba(220, 38, 38, .08);
+  color: var(--red);
+}
+
+.tpd-bot-message ul {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tpd-bot-message li {
+  display: grid;
+  gap: 3px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(21, 17, 15, .08);
+}
+
+.tpd-bot-message li b {
+  color: var(--red);
+  font-size: .9rem;
+}
+
+.tpd-bot-message li span,
+.tpd-bot-message li small,
+.tpd-bot-note {
+  color: rgba(21, 17, 15, .58);
+  font: 700 .75rem/1.35 var(--sans);
+}
+
+.tpd-bot-message a {
+  color: var(--red);
+  font-weight: 900;
+}
+
+.tpd-bot-suggestions {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 0 14px 12px;
+}
+
+.tpd-bot-suggestions button {
+  flex: 0 0 auto;
+  border: 1px solid rgba(220, 38, 38, .22);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--red);
+  cursor: pointer;
+  padding: 8px 10px;
+  font: 900 11px/1 var(--sans);
+}
+
+.tpd-bot-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(21, 17, 15, .1);
+  background: #fff;
+}
+
+.tpd-bot-form input {
+  min-width: 0;
+  border: 1px solid rgba(21, 17, 15, .16);
+  border-radius: 6px;
+  padding: 12px;
+  font: 700 .86rem/1 var(--sans);
+}
+
+.tpd-bot-form button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--red);
+  color: #fff;
+  cursor: pointer;
+  padding: 0 14px;
+  font: 900 .8rem/1 var(--sans);
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 102px;
+  }
+
+  body[data-menu-collection] .menu-collection-head,
+  body[data-menu-collection] .menu-collection-head-chatkaara {
+    padding-top: 112px !important;
+  }
+
+  body[data-menu-collection] .dish-section,
+  body[data-menu-collection] #nonVegMenu,
+  body[data-menu-collection] #vegMenu {
+    scroll-margin-top: 104px;
+  }
+
+  .tpd-bot {
+    right: 12px;
+    bottom: 14px;
+  }
+
+  .tpd-bot-toggle {
+    width: 112px;
+    height: 44px;
+  }
+
+  .tpd-bot-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tpd-bot-label {
+    font-size: 9.5px;
+  }
+
+  .tpd-bot-panel {
+    bottom: 64px;
   }
 }

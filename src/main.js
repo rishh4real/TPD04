@@ -766,6 +766,223 @@ document.addEventListener('click', event => {
 renderCart();
 updateCartCount();
 
+const proteinRange = value => {
+  const numbers = String(value).match(/\d+/g)?.map(Number) || [];
+  return {
+    min: numbers.length ? Math.min(...numbers) : 0,
+    max: numbers.length ? Math.max(...numbers) : 0,
+  };
+};
+
+const menuFamily = item => chatkaaraItemNames.has(item.name) ? 'Chatkaara - The Bihari Experience' : 'The Protein Drop';
+
+const formatBotItem = item => {
+  const sizes = getAvailableSizes(item)
+    .map(option => `${option.label} ${formatPrice(option.price)}`)
+    .join(', ');
+  return `<li><b>${escapeHtml(item.name)}</b><span>${escapeHtml(item.protein)} protein · ${item.section === 'veg' ? 'Veg' : 'Non-veg'} · ${escapeHtml(menuFamily(item))}</span><small>${escapeHtml(sizes)}</small></li>`;
+};
+
+const botMenuLink = item => chatkaaraItemNames.has(item.name)
+  ? './chatkaara-bihari-menu.html'
+  : './protein-drop-menu.html';
+
+const answerMenuQuestion = rawQuestion => {
+  const question = rawQuestion.toLowerCase();
+  const wantsVeg = /\b(veg|vegetarian|paneer|tofu|soya|salad|dal)\b/.test(question);
+  const wantsNonVeg = /\b(non veg|non-veg|nonvegetarian|chicken|fish|mutton|meat|gosht)\b/.test(question);
+  const wantsChatkaara = /\b(chatkaara|bihari|litti|sattu|mutton|sarson|chokha)\b/.test(question);
+  const wantsProteinDrop = /\b(protein drop|salad|tofu|soya|paneer|grill|40)\b/.test(question);
+  const wants40Plus = /\b(40\+|40 g\+|40g\+|40 plus|above 40|more than 40|over 40)\b/.test(question);
+  const proteinMatch = question.match(/(\d{2})\s*(g|gm|gram|grams)?/);
+  const targetProtein = proteinMatch ? Number(proteinMatch[1]) : 0;
+  const wantsProtein = wants40Plus || targetProtein >= 20 || /\b(high protein|protein|protien)\b/.test(question);
+  const wantsPrice = /\b(price|cost|rate|rs|₹|rupee|budget)\b/.test(question);
+  const wantsOrder = /\b(order|cart|whatsapp|deliver|delivery|bulk|party|plan)\b/.test(question);
+  const wantsAbout = /\b(svety|cook|chef|founder|story|about|who are you|who is)\b/.test(question);
+  const wantsMenu = /\b(menu|menus|protein drop|chatkaara|bihari experience)\b/.test(question);
+
+  let candidates = menuItems;
+  if (wantsChatkaara && !wantsProteinDrop) candidates = candidates.filter(item => chatkaaraItemNames.has(item.name));
+  if (wantsProteinDrop && !wantsChatkaara) candidates = candidates.filter(item => !chatkaaraItemNames.has(item.name));
+  if (wantsVeg && !wantsNonVeg) candidates = candidates.filter(item => item.section === 'veg');
+  if (wantsNonVeg && !wantsVeg) candidates = candidates.filter(item => item.section === 'nonveg');
+
+  const textMatches = candidates.filter(item => {
+    const haystack = `${item.name} ${item.detail} ${item.section} ${menuFamily(item)}`.toLowerCase();
+    return question
+      .split(/\s+/)
+      .filter(word => word.length > 3 && !['protein', 'protien', 'items', 'menu', 'food', 'give', 'show', 'need', 'want', 'best'].includes(word))
+      .some(word => haystack.includes(word));
+  });
+
+  if (wantsOrder) {
+    return `
+      <p>For ordering, add dishes to cart and send the cart on WhatsApp. For bulk food or a home party, use <a href="./menu.html#plan-protein-spread">Plan your protein spread</a>.</p>
+      <p>Delivery is currently Gurgaon-focused, and final timing/charges are confirmed on WhatsApp.</p>
+    `;
+  }
+
+  if (wantsAbout) {
+    return `
+      <p>The Protein Drop is Svety's personal small-batch kitchen: real food, high protein, and proper chatkaara without making healthy food joyless.</p>
+      <p>Read the story here: <a href="./svety.html#know-your-cook">Know your cook</a>.</p>
+    `;
+  }
+
+  if (wantsMenu && !wantsProtein && !textMatches.length) {
+    return `
+      <p>There are two menus:</p>
+      <ul>
+        <li><b>The Protein Drop</b><span>High-protein salads, bowls, paneer, tofu, chicken, fish and soya.</span><small><a href="./protein-drop-menu.html">Open Protein Drop menu</a></small></li>
+        <li><b>Chatkaara - The Bihari Experience</b><span>Ghar ka Bihari mutton, chicken, fish, litti chokha, sattu and desi plates.</span><small><a href="./chatkaara-bihari-menu.html">Open Chatkaara menu</a></small></li>
+      </ul>
+    `;
+  }
+
+  if (wantsPrice && textMatches.length) {
+    return `<p>Here are the prices I found:</p><ul>${textMatches.slice(0, 5).map(formatBotItem).join('')}</ul>`;
+  }
+
+  if (wantsProtein) {
+    const minimum = wants40Plus ? 41 : targetProtein || 35;
+    const proteinItems = candidates
+      .filter(item => {
+        const range = proteinRange(item.protein);
+        return wants40Plus ? range.max >= 41 : range.max >= minimum;
+      })
+      .sort((a, b) => proteinRange(b.protein).max - proteinRange(a.protein).max || a.name.localeCompare(b.name));
+    const fallbackItems = proteinItems.length ? proteinItems : candidates
+      .filter(item => proteinRange(item.protein).max >= 35)
+      .slice(0, 6);
+
+    return `
+      <p>${wants40Plus ? 'For 40g+ protein, these are the strongest picks:' : `For around ${minimum}g protein, start with these:`}</p>
+      <ul>${fallbackItems.slice(0, 7).map(formatBotItem).join('')}</ul>
+      <p class="tpd-bot-note">Tip: 40g+ is mostly in soya options; 35-40g has many chicken, mutton and fish picks too.</p>
+    `;
+  }
+
+  if (textMatches.length) {
+    return `<p>I found these menu matches:</p><ul>${textMatches.slice(0, 6).map(formatBotItem).join('')}</ul><p><a href="${botMenuLink(textMatches[0])}">Open this menu</a></p>`;
+  }
+
+  if (wantsVeg) {
+    const vegItems = candidates.filter(item => item.section === 'veg' && proteinRange(item.protein).max >= 25);
+    return `<p>Good veg protein picks:</p><ul>${vegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
+  }
+
+  if (wantsNonVeg) {
+    const nonVegItems = candidates.filter(item => item.section === 'nonveg' && proteinRange(item.protein).max >= 35);
+    return `<p>Strong non-veg protein picks:</p><ul>${nonVegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
+  }
+
+  return `
+    <p>I can help with menu picks, protein targets, veg/non-veg options, prices, ordering and party planning.</p>
+    <p>Try asking: <b>“show 40g+ protein veg items”</b> or <b>“best chicken high protein options”</b>.</p>
+  `;
+};
+
+const initMenuBot = () => {
+  if (document.querySelector('.tpd-bot')) return;
+  if (document.body.dataset.page !== 'menu') return;
+  const menuScope = document.body.dataset.menuCollection
+    ? document.querySelector('.menu-collection-board')
+    : document.querySelector('.menu-choice-section');
+  if (!menuScope) return;
+
+  const bot = document.createElement('section');
+  bot.className = 'tpd-bot';
+  bot.setAttribute('aria-label', 'The Protein Drop menu assistant');
+  bot.innerHTML = `
+    <button class="tpd-bot-toggle" type="button" aria-expanded="false">
+      <span class="tpd-bot-mark" aria-hidden="true">AI</span>
+      <span class="tpd-bot-label">Menu<br />Guide</span>
+    </button>
+    <div class="tpd-bot-panel" hidden>
+      <div class="tpd-bot-head">
+        <div>
+          <span>THE PROTEIN DROP</span>
+          <h2>Menu AI</h2>
+        </div>
+        <button type="button" class="tpd-bot-close" aria-label="Close menu assistant">×</button>
+      </div>
+      <div class="tpd-bot-messages" aria-live="polite">
+        <article class="tpd-bot-message bot">
+          <p>Tell me your protein target, veg/non-veg preference, budget or party size. I will suggest from our real menu.</p>
+        </article>
+      </div>
+      <div class="tpd-bot-suggestions">
+        <button type="button" data-bot-question="Show 40g+ protein items">40g+ protein</button>
+        <button type="button" data-bot-question="Best vegetarian high protein items">Veg protein</button>
+        <button type="button" data-bot-question="Best non veg high protein items">Non-veg</button>
+        <button type="button" data-bot-question="How do I order for a party?">Party order</button>
+      </div>
+      <form class="tpd-bot-form">
+        <input type="text" name="question" autocomplete="off" placeholder="Ask about menu, protein, prices..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(bot);
+
+  const toggleButton = bot.querySelector('.tpd-bot-toggle');
+  const closeButton = bot.querySelector('.tpd-bot-close');
+  const panel = bot.querySelector('.tpd-bot-panel');
+  const form = bot.querySelector('.tpd-bot-form');
+  const input = bot.querySelector('input');
+  const messages = bot.querySelector('.tpd-bot-messages');
+
+  const setOpen = open => {
+    bot.classList.toggle('open', open);
+    panel.hidden = !open;
+    toggleButton.setAttribute('aria-expanded', String(open));
+    if (open) window.setTimeout(() => input.focus(), 80);
+  };
+
+  const ask = question => {
+    const trimmed = question.trim();
+    if (!trimmed) return;
+    messages.insertAdjacentHTML('beforeend', `<article class="tpd-bot-message user"><p>${escapeHtml(trimmed)}</p></article>`);
+    messages.insertAdjacentHTML('beforeend', `<article class="tpd-bot-message bot">${answerMenuQuestion(trimmed)}</article>`);
+    messages.scrollTop = messages.scrollHeight;
+    form.reset();
+  };
+
+  toggleButton.addEventListener('click', () => setOpen(!bot.classList.contains('open')));
+  closeButton.addEventListener('click', () => setOpen(false));
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    ask(input.value);
+  });
+  bot.querySelectorAll('[data-bot-question]').forEach(button => {
+    button.addEventListener('click', () => ask(button.dataset.botQuestion));
+  });
+
+  const footer = document.querySelector('footer');
+  if ('IntersectionObserver' in window) {
+    const menuObserver = new IntersectionObserver(entries => {
+      const menuVisible = entries.some(entry => entry.isIntersecting);
+      bot.classList.toggle('is-in-menu', menuVisible);
+      if (!menuVisible) setOpen(false);
+    }, { rootMargin: '-112px 0px -80px 0px', threshold: 0.01 });
+    menuObserver.observe(menuScope);
+
+    if (footer) {
+      const footerObserver = new IntersectionObserver(entries => {
+        const footerVisible = entries.some(entry => entry.isIntersecting);
+        bot.classList.toggle('is-in-footer', footerVisible);
+        if (footerVisible) setOpen(false);
+      }, { threshold: 0.01 });
+      footerObserver.observe(footer);
+    }
+  } else {
+    bot.classList.add('is-in-menu');
+  }
+};
+
+initMenuBot();
+
 const invoiceRoot = document.querySelector('[data-invoice-root]');
 const renderInvoice = () => {
   if (!invoiceRoot) return;
