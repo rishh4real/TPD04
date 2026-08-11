@@ -10153,3 +10153,151 @@ body[data-page="order"] .order-steps h3 {
     left: 29%;
   }
 }
+
+/* Menu rail belongs beside the dishes, not in the collection hero. */
+.menu-hero-rail {
+  display: none;
+}
+
+.menu-collection-head {
+  padding-right: 6vw;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, .96) 0 48%, rgba(255, 253, 248, .7) 72%, rgba(255, 253, 248, .42)),
+    radial-gradient(circle at 82% 28%, rgba(220, 38, 38, .08), transparent 22rem),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 480px 480px,
+    #fffdfa;
+}
+
+.menu-collection-head-chatkaara {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, .96) 0 48%, rgba(255, 253, 248, .7) 72%, rgba(255, 253, 248, .42)),
+    radial-gradient(circle at 82% 28%, rgba(220, 38, 38, .08), transparent 22rem),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 480px 480px,
+    #fffdfa;
+}
+
+.menu-board-layout-collection {
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+  gap: clamp(30px, 4vw, 54px);
+  align-items: start;
+  max-width: 1240px;
+  margin: 40px auto 0;
+}
+
+.menu-board-layout-collection .menu-lists {
+  max-width: none;
+  margin: 0;
+}
+
+.menu-board-layout-collection .moving-menu-plates {
+  width: 100%;
+  border-radius: 0;
+  position: sticky;
+  top: 126px;
+  height: clamp(520px, calc(100vh - 150px), 760px) !important;
+  max-height: clamp(520px, calc(100vh - 150px), 760px) !important;
+  min-height: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 5%, #000 92%, transparent 100%);
+}
+
+.menu-board-layout-collection .menu-plates-track {
+  gap: 18px;
+  animation: tpd-menu-rail-loop 46s linear infinite;
+  transition: none;
+  will-change: transform;
+}
+
+.menu-board-layout-collection .menu-plates figure {
+  width: 100%;
+  height: clamp(220px, 19vw, 285px);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(21, 17, 15, .14);
+}
+
+.menu-board-layout-collection .menu-plates img {
+  filter: saturate(1.08) contrast(1.06) brightness(.94);
+}
+
+@keyframes tpd-menu-rail-loop {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-board-layout-collection .menu-plates-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .menu-board-layout-collection {
+    display: block;
+  }
+
+  .menu-board-layout-collection .moving-menu-plates {
+    position: static;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible;
+    mask-image: none;
+    margin-bottom: 34px;
+  }
+
+  .menu-board-layout-collection .menu-plates-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    animation: none;
+    transform: none !important;
+  }
+
+  .menu-board-layout-collection .menu-plates figure {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu-collection-head,
+  .menu-collection-head-chatkaara {
+    background:
+      radial-gradient(circle at 74% 10%, rgba(220, 38, 38, .08), transparent 16rem),
+      url("../public/images/home/tpd-doodle-pattern.svg") center top / 440px 440px,
+      #fffdfa;
+  }
+}
+
+/* Keep the menu texture quiet so food cards and headings stay premium. */
+.menu-choice-section {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(220, 38, 38, .045), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .92)),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 680px 680px,
+    #fffdfa;
+}
+
+.menu-collection-head,
+.menu-collection-head-chatkaara {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, .98) 0 48%, rgba(255, 253, 248, .86) 72%, rgba(255, 253, 248, .68)),
+    linear-gradient(180deg, rgba(255, 255, 255, .82), rgba(255, 255, 255, .9)),
+    url("../public/images/home/tpd-doodle-pattern.svg") center top / 680px 680px,
+    #fffdfa;
+}
+
+@media (max-width: 760px) {
+  .menu-choice-section,
+  .menu-collection-head,
+  .menu-collection-head-chatkaara {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .94)),
+      url("../public/images/home/tpd-doodle-pattern.svg") center top / 620px 620px,
+      #fffdfa;
+  }
+}
