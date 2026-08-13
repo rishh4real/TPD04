@@ -407,10 +407,61 @@ const defaultMenuItems = [
   },
 ];
 
+const proteinDropItemNames = new Set([
+  'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Gosht Kebab Sliders (2 pieces)',
+  'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+  'Deconstructed Butter Chicken (without Butter) Boneless',
+  'Murg Safeda',
+  'Black Sesame Chicken',
+  'Tawa Chicken',
+  'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Tandoori Chicken Salad (Boneless)',
+  'Chicken Bharta Bihari Style (Boneless)',
+  'Peri Peri Chicken (Boneless)',
+  'Mexican Salsa Chicken (Boneless)',
+  'Olive Chicken (Boneless)',
+  'Oriental Style Chicken (Boneless)',
+  'Chicken Keema (Mexican Style)',
+  'Chicken Sliders (2 pieces)',
+  'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+  'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
+  'Chutney Fish Boneless Fish',
+  'Oriental Style Boneless Fish',
+  'Sumac Barley, Nuts, Pomegranate, Bell Pepper & Feta Salad',
+  'Mixed Bean Salad',
+  'Paneer in Assorted Pepper Toss',
+  'Paneer Oriental Style',
+  'Mexican Salsa Paneer',
+  'Olive Paneer',
+  'Soya Chunks Masala',
+  'Chilli Soya Chunks Oriental Style',
+  'Tofu Tikka (Indian Style)',
+  'Tofu Sesame Stir Fry',
+  'Mexican Tofu Salsa',
+  'Olive Tofu',
+  'Veg Protein Tikkis',
+  'Dal Tadka (Hara Moong/Mixed/Peeli) + 2 Sattu Paratha',
+  'Litti Chokha (6 / 12)',
+  'Sattu Paratha (4 pcs)',
+]);
+
 const chatkaaraItemNames = new Set([
+  'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
   'Ghar Ka Bihari Mutton',
   'Bihari Champaran Meat (Ahuna Mutton)',
   'Latpat Bhuna Meat',
+  'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+  'Deconstructed Butter Chicken (without Butter) Boneless',
+  'Murg Safeda',
+  'Black Sesame Chicken',
+  'Tawa Chicken',
+  'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Chicken Bharta Bihari Style (Boneless)',
+  'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+  'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
+  'Litti Chokha (6 / 12)',
+  'Sattu Paratha (4 pcs)',
   'Matar Poori (4 pcs)',
   'Bihari Vegetables Pachranga',
   'Sukha Ghiya Dal',
@@ -564,9 +615,21 @@ const menuCollection = document.body.dataset.menuCollection;
 const visibleMenuItems = menuCollection === 'chatkaara'
   ? menuItems.filter(item => chatkaaraItemNames.has(item.name))
   : menuCollection === 'protein'
-    ? menuItems.filter(item => !chatkaaraItemNames.has(item.name))
+    ? menuItems.filter(item => proteinDropItemNames.has(item.name))
     : menuItems;
-const menuFamily = item => chatkaaraItemNames.has(item.name) ? 'Chatkaara - The Bihari Experience' : 'The Protein Drop';
+const menuFamily = item => {
+  const inProtein = proteinDropItemNames.has(item.name);
+  const inChatkaara = chatkaaraItemNames.has(item.name);
+  if (inProtein && inChatkaara) return 'Protein Drop + Chatkaara';
+  return inChatkaara ? 'Chatkaara - The Bihari Experience' : 'The Protein Drop';
+};
+const menuBelongsTo = (item, collection) => (
+  collection === 'chatkaara'
+    ? chatkaaraItemNames.has(item.name)
+    : collection === 'protein'
+      ? proteinDropItemNames.has(item.name)
+      : true
+);
 
 if (nonVegGrid && vegGrid) {
   const searchInput = document.querySelector('[data-menu-search]');
@@ -828,8 +891,8 @@ const answerMenuQuestion = rawQuestion => {
   const wantsMenu = /\b(menu|menus|protein drop|chatkaara|bihari experience)\b/.test(question);
 
   let candidates = menuItems;
-  if (wantsChatkaara && !wantsProteinDrop) candidates = candidates.filter(item => chatkaaraItemNames.has(item.name));
-  if (wantsProteinDrop && !wantsChatkaara) candidates = candidates.filter(item => !chatkaaraItemNames.has(item.name));
+  if (wantsChatkaara && !wantsProteinDrop) candidates = candidates.filter(item => menuBelongsTo(item, 'chatkaara'));
+  if (wantsProteinDrop && !wantsChatkaara) candidates = candidates.filter(item => menuBelongsTo(item, 'protein'));
   if (wantsVeg && !wantsNonVeg) candidates = candidates.filter(item => item.section === 'veg');
   if (wantsNonVeg && !wantsVeg) candidates = candidates.filter(item => item.section === 'nonveg');
 
