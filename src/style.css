@@ -287,6 +287,11 @@ html body .site-header.has-independence-banner > .menu-toggle {
   z-index: 2;
 }
 
+html body .site-header.has-independence-banner .wordmark img.wordmark-main-logo {
+  opacity: .9;
+  filter: drop-shadow(0 10px 22px rgba(17, 17, 17, .08));
+}
+
 .independence-banner {
   position: absolute;
   left: 50%;
