@@ -11612,3 +11612,193 @@ body[data-page="menu"]:not([data-menu-collection]) .menu-choice-section > .eyebr
     bottom: 64px;
   }
 }
+
+/* Client feedback pass: WhatsApp-style reviews and tighter Svety story hierarchy. */
+body[data-page="svety"] .know-cook-text p.belief-small {
+  max-width: 680px;
+  margin: 14px 0 0;
+  color: rgba(17, 17, 17, .76);
+  font: 800 clamp(.95rem, 1vw, 1.1rem)/1.42 var(--sans), Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+body[data-page="svety"] .know-cook-text p.belief-red-big {
+  max-width: 700px;
+  margin: 10px 0 0;
+  color: var(--red);
+  font: 900 clamp(1.3rem, 2.35vw, 2.65rem)/1.04 var(--serif), Georgia, serif;
+  letter-spacing: 0;
+}
+
+body[data-page="svety"] .know-cook-text p.highlight-red-break:last-child {
+  margin-top: 16px;
+  color: var(--red) !important;
+  font-size: clamp(1.65rem, 3.1vw, 3.15rem);
+  line-height: .98;
+}
+
+body[data-page="home"] .home-reviews {
+  min-height: 0;
+  padding: clamp(34px, 4vw, 54px) 4.8vw clamp(38px, 4.4vw, 58px);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(37, 211, 102, .09), transparent 26rem),
+    linear-gradient(180deg, #f7faf5, #eef6ec);
+}
+
+body[data-page="home"] .home-reviews::before {
+  background-image:
+    linear-gradient(135deg, rgba(18, 140, 126, .045) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(18, 140, 126, .045) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(18, 140, 126, .035) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(18, 140, 126, .035) 25%, #f7faf5 25%);
+  background-position: 14px 0, 14px 0, 0 0, 0 0;
+  background-size: 28px 28px;
+  opacity: .72;
+}
+
+body[data-page="home"] .home-reviews-kicker {
+  display: inline-flex;
+  margin: 0 0 10px;
+  color: #128c7e;
+  font: 900 .68rem/1 var(--mono), monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .home-reviews h2 {
+  margin-bottom: clamp(20px, 2.3vw, 32px);
+  color: rgba(21, 17, 15, .76);
+  font-size: clamp(1.75rem, 2.6vw, 2.7rem);
+}
+
+body[data-page="home"] .home-reviews-stage {
+  grid-template-columns: minmax(0, 1120px);
+  justify-content: center;
+  max-width: 1180px;
+}
+
+body[data-page="home"] .home-review-arrow {
+  display: none;
+}
+
+body[data-page="home"] .home-reviews-window {
+  overflow: visible;
+  padding: 0;
+}
+
+body[data-page="home"] .home-reviews-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+body[data-page="home"] .home-review-card,
+body[data-page="home"] .home-review-card-featured,
+body[data-page="home"] .home-review-card.is-active {
+  min-height: 0;
+  flex: initial;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px 18px 30px;
+  border: 1px solid rgba(18, 140, 126, .08);
+  border-radius: 10px 10px 10px 2px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 16px 38px rgba(21, 17, 15, .055);
+  text-align: left;
+  transform: none;
+}
+
+body[data-page="home"] .home-review-card:nth-child(even),
+body[data-page="home"] .home-review-card:nth-child(even).is-active {
+  border-radius: 10px 10px 2px 10px;
+  background: #e3f7db;
+}
+
+body[data-page="home"] .home-review-card::before,
+body[data-page="home"] .home-review-card.is-active::before,
+body[data-page="home"] .home-review-card-featured::before {
+  content: attr(data-sender);
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 7px;
+  background: none;
+  color: #ff6f84;
+  font: 900 .78rem/1 var(--sans), Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+body[data-page="home"] .home-review-card::after {
+  content: attr(data-time) "  ✓✓";
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  color: rgba(21, 17, 15, .42);
+  font: 800 .68rem/1 var(--sans), Arial, sans-serif;
+}
+
+body[data-page="home"] .home-review-card p {
+  color: rgba(21, 17, 15, .78);
+  font: 800 clamp(.78rem, .82vw, .92rem)/1.45 var(--sans), Arial, sans-serif;
+}
+
+body[data-page="home"] .home-review-card span,
+body[data-page="home"] .home-review-card.is-active span,
+body[data-page="home"] .home-review-card-featured span {
+  margin-top: 10px;
+  color: #128c7e;
+  font: 900 .62rem/1 var(--mono), monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .home-reviews-cta {
+  border-radius: 999px;
+  background: #25d366;
+  box-shadow: 0 18px 38px rgba(37, 211, 102, .24);
+}
+
+body[data-page="home"] .home-reviews-cta:hover {
+  background: #1fb457;
+}
+
+@media (max-width: 760px) {
+  body[data-page="svety"] .know-cook-text p.belief-red-big {
+    font-size: clamp(1.65rem, 7vw, 2.35rem);
+  }
+
+  body[data-page="svety"] .know-cook-text p.highlight-red-break:last-child {
+    font-size: clamp(2.25rem, 10vw, 3.2rem);
+  }
+
+  body[data-page="home"] .home-reviews-stage {
+    grid-template-columns: 30px minmax(0, 1fr) 30px;
+  }
+
+  body[data-page="home"] .home-review-arrow {
+    display: inline-flex;
+    background: rgba(255, 255, 255, .86);
+    box-shadow: 0 12px 28px rgba(21, 17, 15, .08);
+  }
+
+  body[data-page="home"] .home-reviews-window {
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .home-reviews-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  body[data-page="home"] .home-review-card,
+  body[data-page="home"] .home-review-card-featured,
+  body[data-page="home"] .home-review-card.is-active {
+    flex: 0 0 min(82vw, 320px);
+    scroll-snap-align: center;
+  }
+}

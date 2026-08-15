@@ -497,11 +497,40 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
 }[char]));
 
 const CART_KEY = 'tpd-cart-v1';
-const sizeLabels = ['300g', '500g', '1kg'];
+const defaultSizeLabels = ['300g', '500g', '1kg'];
+const itemSizeLabelOverrides = new Map([
+  ['Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)', ['2 pcs', '5 pcs', '10 pcs']],
+  ['Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Gosht Kebab Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
+  ['Chicken Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
+  ['Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)', ['2 pcs', '5 pcs', '10 pcs']],
+  ['Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Litti Chokha (6 / 12)', ['6 pcs', '12 pcs', '1kg']],
+  ['Sattu Paratha (4 pcs)', ['4 pcs', '500g', '1kg']],
+  ['Matar Poori (4 pcs)', ['4 pcs', '500g', '1kg']],
+]);
+
+const getSizeLabels = item => itemSizeLabelOverrides.get(item.name) || defaultSizeLabels;
 
 const getAvailableSizes = item => item.prices
-  .map((price, index) => ({ label: sizeLabels[index], price }))
+  .map((price, index) => ({ label: getSizeLabels(item)[index] || defaultSizeLabels[index], price, index }))
   .filter(option => option.price !== '-');
+
+const normalizeCartSize = (item, size) => {
+  const available = getAvailableSizes(item);
+  const exact = available.find(option => option.label === size);
+  if (exact) return exact;
+  const legacyIndex = defaultSizeLabels.indexOf(size);
+  return legacyIndex >= 0
+    ? available.find(option => option.index === legacyIndex)
+    : null;
+};
+
+const getPriceForSize = (item, size) => {
+  const selected = normalizeCartSize(item, size);
+  return selected ? selected.price : '-';
+};
 
 const readCart = () => {
   try {
@@ -510,9 +539,7 @@ const readCart = () => {
     return parsed
       .map(item => {
         const menuItem = menuItems.find(menuItem => menuItem.id === item.id);
-        const availableSize = menuItem
-          ? getAvailableSizes(menuItem).find(option => option.label === item.size)
-          : null;
+        const availableSize = menuItem ? normalizeCartSize(menuItem, item.size) : null;
         const quantity = Math.max(0, Number(item.quantity) || 0);
         return menuItem && availableSize && quantity > 0
           ? { id: item.id, size: availableSize.label, quantity }
@@ -582,9 +609,9 @@ const menuCard = (item, index) => `
     <h3 title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</h3>
     <p title="${escapeHtml(item.detail)}">${escapeHtml(item.detail)}</p>
     <div class="price-row" aria-label="Prices">
-      <span><b>300g</b>${formatPrice(item.prices[0])}</span>
-      <span><b>500g</b>${formatPrice(item.prices[1])}</span>
-      <span><b>1kg</b>${formatPrice(item.prices[2])}</span>
+      <span><b>${escapeHtml(getSizeLabels(item)[0] || defaultSizeLabels[0])}</b>${formatPrice(item.prices[0])}</span>
+      <span><b>${escapeHtml(getSizeLabels(item)[1] || defaultSizeLabels[1])}</b>${formatPrice(item.prices[1])}</span>
+      <span><b>${escapeHtml(getSizeLabels(item)[2] || defaultSizeLabels[2])}</b>${formatPrice(item.prices[2])}</span>
     </div>
     <div class="menu-cart-row">
       <select class="menu-size-select" aria-label="Choose size for ${escapeHtml(item.name)}">
@@ -721,10 +748,12 @@ const cartRoot = document.querySelector('[data-cart-root]');
 const getCartLine = cartItem => {
   const item = menuItems.find(menuItem => menuItem.id === cartItem.id);
   if (!item) return null;
-  const sizeIndex = sizeLabels.indexOf(cartItem.size);
-  const price = item.prices[sizeIndex] || '-';
+  const normalizedSize = normalizeCartSize(item, cartItem.size);
+  if (!normalizedSize) return null;
+  const price = getPriceForSize(item, normalizedSize.label);
   return {
     ...cartItem,
+    size: normalizedSize.label,
     item,
     price,
     subtotal: price === '-' ? 0 : Number(price) * cartItem.quantity,
@@ -737,7 +766,7 @@ const buildWhatsAppOrder = lines => {
     const subtotalText = line.subtotal > 0 ? `Rs ${line.subtotal}` : 'To be confirmed';
     return [
       `${index + 1}. ${line.item.name}`,
-      `   Size: ${line.size}`,
+      `   Option: ${line.size}`,
       `   Quantity: ${line.quantity}`,
       `   Price: ${priceText} each`,
       `   Subtotal: ${subtotalText}`,
