@@ -262,85 +262,66 @@ a { color: inherit; }
   text-decoration-thickness: 2px;
 }
 
+html body .site-header.has-independence-banner {
+  overflow: hidden;
+  background: #ffffff;
+}
+
+html body .site-header.has-independence-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg,
+      rgba(255, 153, 51, .2) 0 33.33%,
+      rgba(255, 255, 255, .92) 33.33% 66.66%,
+      rgba(19, 136, 8, .17) 66.66% 100%);
+}
+
+html body .site-header.has-independence-banner > .wordmark,
+html body .site-header.has-independence-banner > .main-nav,
+html body .site-header.has-independence-banner > .menu-toggle {
+  position: relative;
+  z-index: 2;
+}
+
 .independence-banner {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 2;
-  display: inline-flex;
+  z-index: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   width: max-content;
-  max-width: min(48vw, 560px);
-  min-height: 38px;
-  padding: 8px 16px;
-  border: 1px solid rgba(19, 136, 8, .18);
-  border-radius: 999px;
-  background:
-    linear-gradient(90deg, rgba(255, 153, 51, .1), rgba(255, 255, 255, .94) 38%, rgba(19, 136, 8, .1)),
-    #ffffff;
-  color: #111111;
-  box-shadow: 0 16px 40px rgba(21, 17, 15, .08);
+  max-width: min(52vw, 720px);
+  color: #121212;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  text-align: center;
   white-space: nowrap;
-  font: 900 clamp(.66rem, .9vw, .88rem)/1 var(--mono), monospace;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  font: 900 clamp(1.15rem, 2.2vw, 2.65rem)/1 var(--serif), Georgia, serif;
+  letter-spacing: 0;
+  text-shadow: 0 10px 28px rgba(255, 255, 255, .72);
 }
 
-.independence-flag {
-  position: relative;
-  width: 34px;
-  height: 22px;
-  flex: 0 0 auto;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #ff9933 0 33.3%, #ffffff 33.3% 66.6%, #138808 66.6% 100%);
-  box-shadow: 0 0 0 1px rgba(21, 17, 15, .12), 0 8px 18px rgba(21, 17, 15, .1);
-  transform-origin: left center;
-  animation: independenceWave 1.7s ease-in-out infinite;
-}
-
-.independence-flag::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: -2px;
-  width: 2px;
-  height: 28px;
-  border-radius: 999px;
-  background: rgba(21, 17, 15, .34);
-}
-
-.independence-flag::after {
+.independence-banner::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 8px;
-  height: 8px;
-  border: 1.5px solid #000080;
+  z-index: -1;
+  width: clamp(48px, 5.4vw, 90px);
+  aspect-ratio: 1;
+  border: 2px solid rgba(0, 0, 128, .1);
   border-radius: 50%;
+  background:
+    repeating-conic-gradient(rgba(0, 0, 128, .11) 0 3deg, transparent 3deg 15deg),
+    radial-gradient(circle, rgba(0, 0, 128, .14) 0 6%, transparent 7% 42%, rgba(0, 0, 128, .09) 43% 46%, transparent 47%);
+  opacity: .62;
   transform: translate(-50%, -50%);
-}
-
-.independence-flag-right {
-  animation-delay: .34s;
-}
-
-@keyframes independenceWave {
-  0%, 100% {
-    transform: skewY(0deg) scaleX(1);
-  }
-
-  45% {
-    transform: skewY(-5deg) scaleX(.96);
-  }
-
-  70% {
-    transform: skewY(4deg) scaleX(1.03);
-  }
 }
 
 .nav-cart {
@@ -11887,31 +11868,25 @@ body[data-page="home"] .home-reviews-cta:hover {
 @media (max-width: 760px) {
   .independence-banner {
     top: auto;
-    bottom: 7px;
-    max-width: calc(100vw - 132px);
-    min-height: 28px;
-    padding: 6px 10px;
-    gap: 7px;
-    font-size: clamp(.5rem, 2.1vw, .62rem);
-    letter-spacing: .04em;
+    bottom: 9px;
+    max-width: calc(100vw - 148px);
+    font-size: clamp(.72rem, 3.2vw, 1rem);
   }
 
   .site-header.is-compact .independence-banner {
     display: none;
   }
 
-  .independence-flag {
-    width: 24px;
-    height: 16px;
+  .independence-banner::before {
+    width: 36px;
+    opacity: .45;
   }
+}
 
-  .independence-flag::before {
-    height: 21px;
-  }
-
-  .independence-flag::after {
-    width: 6px;
-    height: 6px;
-    border-width: 1px;
+@media (max-width: 420px) {
+  .independence-banner {
+    left: 56%;
+    max-width: calc(100vw - 132px);
+    font-size: .7rem;
   }
 }

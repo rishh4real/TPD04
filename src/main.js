@@ -1256,19 +1256,19 @@ const initIndependenceBanner = () => {
   const isIndependenceDay = now.getMonth() === 7 && now.getDate() === 15;
   if (!isIndependenceDay) return;
 
+  header.classList.add('has-independence-banner');
   const banner = document.createElement('div');
   banner.className = 'independence-banner';
   banner.setAttribute('aria-label', 'Happy Independence Day');
-  banner.innerHTML = `
-    <span class="independence-flag" aria-hidden="true"></span>
-    <span>Happy Independence Day</span>
-    <span class="independence-flag independence-flag-right" aria-hidden="true"></span>
-  `;
+  banner.innerHTML = '<span>Happy Independence Day 🇮🇳</span>';
   header.appendChild(banner);
 
   const tomorrow = new Date(now);
   tomorrow.setHours(24, 0, 0, 0);
-  window.setTimeout(() => banner.remove(), Math.max(0, tomorrow.getTime() - now.getTime()));
+  window.setTimeout(() => {
+    banner.remove();
+    header.classList.remove('has-independence-banner');
+  }, Math.max(0, tomorrow.getTime() - now.getTime()));
 };
 
 initIndependenceBanner();
