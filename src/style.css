@@ -125,6 +125,39 @@ a { color: inherit; }
   max-width: clamp(152px, 12.6vw, 206px);
 }
 
+.header-order-cta {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-left: auto;
+  margin-right: clamp(18px, 2vw, 34px);
+  padding: 0 22px;
+  border: 1px solid rgba(220, 38, 38, .28);
+  border-radius: 999px;
+  background: var(--red);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(220, 38, 38, .18);
+  font: 900 .76rem/1 var(--mono), monospace;
+  letter-spacing: .09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.header-order-cta:hover {
+  transform: translateY(-1px);
+  background: #c91f1f;
+  box-shadow: 0 18px 38px rgba(220, 38, 38, .24);
+}
+
+.site-header.is-compact .header-order-cta {
+  min-height: 40px;
+  padding: 0 18px;
+}
+
 .mobile-nav-brand img.wordmark-nav-logo {
   width: min(290px, 76vw);
   height: auto;
@@ -282,6 +315,7 @@ html body .site-header.has-independence-banner::before {
 
 html body .site-header.has-independence-banner > .wordmark,
 html body .site-header.has-independence-banner > .main-nav,
+html body .site-header.has-independence-banner > .header-order-cta,
 html body .site-header.has-independence-banner > .menu-toggle {
   position: relative;
   z-index: 2;
@@ -8490,6 +8524,7 @@ body[data-page="home"] .home-hero-note {
 body[data-page="home"] .home-hero-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   margin-top: 22px;
   color: #ffffff;
@@ -8498,6 +8533,36 @@ body[data-page="home"] .home-hero-link {
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: 0 3px 18px rgba(0, 0, 0, .45);
+}
+
+body[data-page="home"] .home-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+body[data-page="home"] .home-hero-actions .home-hero-link {
+  min-height: 44px;
+  margin-top: 0;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, .34);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
+  backdrop-filter: blur(8px);
+}
+
+body[data-page="home"] .home-hero-actions .home-hero-link-order {
+  border-color: rgba(220, 38, 38, .9);
+  background: var(--red);
+  box-shadow: 0 16px 36px rgba(220, 38, 38, .24);
+}
+
+body[data-page="home"] .home-hero-actions .home-hero-link-order::after {
+  border-left-color: #ffffff;
 }
 
 body[data-page="home"] .home-hero-link::after {
@@ -11893,5 +11958,26 @@ body[data-page="home"] .home-reviews-cta:hover {
     left: 56%;
     max-width: calc(100vw - 132px);
     font-size: .7rem;
+  }
+}
+
+/* Homepage order prompts: kept last so the late client-feedback overrides do not hide them. */
+@media (max-width: 760px) {
+  .header-order-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  body[data-page="home"] .home-hero-actions {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  body[data-page="home"] .home-hero-actions .home-hero-link {
+    min-height: 40px;
+    margin-top: 0;
+    padding: 0 14px;
+    font-size: .68rem;
   }
 }
