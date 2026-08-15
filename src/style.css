@@ -11981,3 +11981,76 @@ body[data-page="home"] .home-reviews-cta:hover {
     font-size: .68rem;
   }
 }
+
+/* Mobile review carousel: keep every WhatsApp bubble fully readable. */
+@media (max-width: 760px) {
+  body[data-page="home"] .home-reviews {
+    padding-inline: 0;
+  }
+
+  body[data-page="home"] .home-reviews h2,
+  body[data-page="home"] .home-reviews-kicker {
+    margin-inline: 18px;
+  }
+
+  body[data-page="home"] .home-reviews-stage {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  body[data-page="home"] .home-reviews-window {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  body[data-page="home"] .home-reviews-track {
+    display: flex;
+    gap: 14px;
+    padding: 0 52px;
+    overflow-x: auto;
+    scroll-padding-inline: 52px;
+    scroll-snap-type: x mandatory;
+  }
+
+  body[data-page="home"] .home-review-card,
+  body[data-page="home"] .home-review-card-featured,
+  body[data-page="home"] .home-review-card.is-active {
+    flex: 0 0 min(74vw, 340px);
+    width: min(74vw, 340px);
+    padding: 16px 18px 32px;
+    overflow: visible;
+    scroll-snap-align: center;
+  }
+
+  body[data-page="home"] .home-review-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 4;
+    display: inline-flex;
+    transform: translateY(-50%);
+  }
+
+  body[data-page="home"] .home-review-arrow-prev {
+    left: 10px;
+  }
+
+  body[data-page="home"] .home-review-arrow-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  body[data-page="home"] .home-reviews-track {
+    padding-inline: 46px;
+    scroll-padding-inline: 46px;
+  }
+
+  body[data-page="home"] .home-review-card,
+  body[data-page="home"] .home-review-card-featured,
+  body[data-page="home"] .home-review-card.is-active {
+    flex-basis: calc(100vw - 104px);
+    width: calc(100vw - 104px);
+  }
+}
