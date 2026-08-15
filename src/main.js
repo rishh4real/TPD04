@@ -1250,6 +1250,29 @@ const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const header = document.querySelector('.site-header');
 
+const initIndependenceBanner = () => {
+  if (!header) return;
+  const now = new Date();
+  const isIndependenceDay = now.getMonth() === 7 && now.getDate() === 15;
+  if (!isIndependenceDay) return;
+
+  const banner = document.createElement('div');
+  banner.className = 'independence-banner';
+  banner.setAttribute('aria-label', 'Happy Independence Day');
+  banner.innerHTML = `
+    <span class="independence-flag" aria-hidden="true"></span>
+    <span>Happy Independence Day</span>
+    <span class="independence-flag independence-flag-right" aria-hidden="true"></span>
+  `;
+  header.appendChild(banner);
+
+  const tomorrow = new Date(now);
+  tomorrow.setHours(24, 0, 0, 0);
+  window.setTimeout(() => banner.remove(), Math.max(0, tomorrow.getTime() - now.getTime()));
+};
+
+initIndependenceBanner();
+
 if (header) {
   const syncCompactHeader = () => {
     header.classList.toggle('is-compact', window.scrollY > 80);
