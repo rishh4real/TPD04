@@ -28,7 +28,7 @@ document.querySelectorAll('[data-review-carousel]').forEach(carousel => {
   const previous = carousel.querySelector('[data-review-prev]');
   const next = carousel.querySelector('[data-review-next]');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let activeIndex = Math.min(1, Math.max(0, cards.length - 1));
+  let activeIndex = 0;
   let timer = 0;
 
   if (!track || cards.length === 0) return;
@@ -57,7 +57,7 @@ document.querySelectorAll('[data-review-carousel]').forEach(carousel => {
 
   const startAutoReviews = () => {
     if (prefersReducedMotion.matches || timer) return;
-    timer = window.setInterval(() => scrollToCard(activeIndex + 1), 3600);
+    timer = window.setInterval(() => scrollToCard(activeIndex + 1), 4800);
   };
 
   previous?.addEventListener('click', () => {
@@ -92,17 +92,17 @@ document.querySelectorAll('[data-review-carousel]').forEach(carousel => {
 const defaultMenuItems = [
   {
     section: 'nonveg',
-    name: 'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
+    name: 'Makhmal Mutton Tikkis',
     detail: 'No binder used. Makhmal by name, melt-in-the-mouth by nature. Minced mutton mixed with onions, herbs and our house spices, shaped by hand and pan-seared till beautifully browned. Soft, juicy and dangerously easy to keep eating.',
     protein: '35-40 g',
     prices: ['500', '1100', '2000'],
   },
   {
     section: 'nonveg',
-    name: 'Ghar Ka Bihari Mutton',
+    name: 'Gharwala Bihari Mutton',
     detail: 'This is home in a bowl, like mutton is cooked in Bihari homes. If this is your first order, I would secretly hope you choose this. Mutton slow-cooked with onions, garlic and everyday desi masalas till the meat is tender and the gravy rich with flavour.',
     protein: '35-40 g',
-    prices: ['600', '1200', '2200'],
+    prices: ['-', '1200', '2200'],
   },
   {
     section: 'nonveg',
@@ -127,10 +127,10 @@ const defaultMenuItems = [
   },
   {
     section: 'nonveg',
-    name: 'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+    name: 'Gharwala Bihari Desi Masala Murg',
     detail: 'The chicken you would expect at a Bihari home, not a restaurant. Chicken cooked slow in onions, tomatoes, garlic and our desi masalas till everything comes together in a thick, clingy gravy. Rustic, comforting and unapologetically ghar ka khana.',
     protein: '35-40 g',
-    prices: ['500', '950', '1800'],
+    prices: ['-', '950', '1800'],
   },
   {
     section: 'nonveg',
@@ -162,7 +162,7 @@ const defaultMenuItems = [
   },
   {
     section: 'nonveg',
-    name: 'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+    name: 'Chicken Tikkis',
     detail: 'Who said tikkis need potatoes? Juicy minced chicken, seasoned with herbs and spices, shaped by hand and pan-seared till golden. Protein-packed little bites that work as a snack, a side, or straight out of the box.',
     protein: '35-40 g',
     prices: ['500', '850', '1600'],
@@ -232,8 +232,8 @@ const defaultMenuItems = [
   },
   {
     section: 'nonveg',
-    name: 'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
-    detail: 'Flaky fish mixed with herbs, aromatics and spices, some bell pepper and onion, shaped by hand and pan-seared.',
+    name: 'Machli Ke Tikki',
+    detail: 'Fish mixed with herbs, aromatics and spices, some bell pepper and onion, shaped by hand and pan-seared.',
     protein: '30-35 g',
     prices: ['550', '1000', '1950'],
   },
@@ -351,21 +351,21 @@ const defaultMenuItems = [
   },
   {
     section: 'veg',
-    name: 'Litti Chokha (6 / 12)',
+    name: 'Litti Chokha',
     detail: 'Bihar OG comfort food needs no reinvention. Sattu-stuffed littis roasted till beautifully browned, served with smoky, rustic chokha. Earthy, hearty and best eaten with your hands.',
     protein: '15-20 g*',
     prices: ['600', '1000', '-'],
   },
   {
     section: 'veg',
-    name: 'Sattu Paratha (4 pcs)',
+    name: 'Sattu Paratha',
     detail: 'Parathas generously stuffed with roasted chana sattu, onions, herbs, spices and that essential Bihari hit of flavour. Rustic, filling and the kind of food that tastes like home.',
     protein: '25-30 g*',
     prices: ['350', '-', '-'],
   },
   {
     section: 'veg',
-    name: 'Matar Poori (4 pcs)',
+    name: 'Matar Poori',
     detail: 'Bestseller. Needs no intro.',
     protein: '-',
     prices: ['350', '-', '-'],
@@ -408,14 +408,14 @@ const defaultMenuItems = [
 ];
 
 const proteinDropItemNames = new Set([
-  'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Makhmal Mutton Tikkis',
   'Gosht Kebab Sliders (2 pieces)',
-  'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+  'Gharwala Bihari Desi Masala Murg',
   'Deconstructed Butter Chicken (without Butter) Boneless',
   'Murg Safeda',
   'Black Sesame Chicken',
   'Tawa Chicken',
-  'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Chicken Tikkis',
   'Tandoori Chicken Salad (Boneless)',
   'Chicken Bharta Bihari Style (Boneless)',
   'Peri Peri Chicken (Boneless)',
@@ -425,7 +425,7 @@ const proteinDropItemNames = new Set([
   'Chicken Keema (Mexican Style)',
   'Chicken Sliders (2 pieces)',
   'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
-  'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
+  'Machli Ke Tikki',
   'Chutney Fish Boneless Fish',
   'Oriental Style Boneless Fish',
   'Sumac Barley, Nuts, Pomegranate, Bell Pepper & Feta Salad',
@@ -442,27 +442,27 @@ const proteinDropItemNames = new Set([
   'Olive Tofu',
   'Veg Protein Tikkis',
   'Dal Tadka (Hara Moong/Mixed/Peeli) + 2 Sattu Paratha',
-  'Litti Chokha (6 / 12)',
-  'Sattu Paratha (4 pcs)',
+  'Litti Chokha',
+  'Sattu Paratha',
 ]);
 
 const chatkaaraItemNames = new Set([
-  'Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)',
-  'Ghar Ka Bihari Mutton',
+  'Makhmal Mutton Tikkis',
+  'Gharwala Bihari Mutton',
   'Bihari Champaran Meat (Ahuna Mutton)',
   'Latpat Bhuna Meat',
-  'Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)',
+  'Gharwala Bihari Desi Masala Murg',
   'Deconstructed Butter Chicken (without Butter) Boneless',
   'Murg Safeda',
   'Black Sesame Chicken',
   'Tawa Chicken',
-  'Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)',
+  'Chicken Tikkis',
   'Chicken Bharta Bihari Style (Boneless)',
   'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
-  'Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)',
-  'Litti Chokha (6 / 12)',
-  'Sattu Paratha (4 pcs)',
-  'Matar Poori (4 pcs)',
+  'Machli Ke Tikki',
+  'Litti Chokha',
+  'Sattu Paratha',
+  'Matar Poori',
   'Bihari Vegetables Pachranga',
   'Sukha Ghiya Dal',
   'Sarson Bhindi',
@@ -499,16 +499,15 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
 const CART_KEY = 'tpd-cart-v1';
 const defaultSizeLabels = ['300g', '500g', '1kg'];
 const itemSizeLabelOverrides = new Map([
-  ['Makhmal Mutton Tikkis (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
-  ['Gharwala Bihari Desi Masala Murg (2 pcs / 5 pcs / 10 pcs)', ['2 pcs', '5 pcs', '10 pcs']],
-  ['Chicken Tikkis (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Makhmal Mutton Tikkis', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Chicken Tikkis', ['5 pcs', '10 pcs', '20 pcs']],
   ['Gosht Kebab Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
   ['Chicken Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
   ['Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)', ['2 pcs', '5 pcs', '10 pcs']],
-  ['Machli Ke Tikki (5 pcs / 10 pcs / 20 pcs)', ['5 pcs', '10 pcs', '20 pcs']],
-  ['Litti Chokha (6 / 12)', ['6 pcs', '12 pcs', '1kg']],
-  ['Sattu Paratha (4 pcs)', ['4 pcs', '500g', '1kg']],
-  ['Matar Poori (4 pcs)', ['4 pcs', '500g', '1kg']],
+  ['Machli Ke Tikki', ['5 pcs', '10 pcs', '20 pcs']],
+  ['Litti Chokha', ['6 pcs', '12 pcs', '1kg']],
+  ['Sattu Paratha', ['4 pcs', '500g', '1kg']],
+  ['Matar Poori', ['4 pcs', '500g', '1kg']],
 ]);
 
 const getSizeLabels = item => itemSizeLabelOverrides.get(item.name) || defaultSizeLabels;
@@ -609,9 +608,7 @@ const menuCard = (item, index) => `
     <h3 title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</h3>
     <p title="${escapeHtml(item.detail)}">${escapeHtml(item.detail)}</p>
     <div class="price-row" aria-label="Prices">
-      <span><b>${escapeHtml(getSizeLabels(item)[0] || defaultSizeLabels[0])}</b>${formatPrice(item.prices[0])}</span>
-      <span><b>${escapeHtml(getSizeLabels(item)[1] || defaultSizeLabels[1])}</b>${formatPrice(item.prices[1])}</span>
-      <span><b>${escapeHtml(getSizeLabels(item)[2] || defaultSizeLabels[2])}</b>${formatPrice(item.prices[2])}</span>
+      ${getAvailableSizes(item).map(option => `<span><b>${escapeHtml(option.label)}</b>${formatPrice(option.price)}</span>`).join('')}
     </div>
     <div class="menu-cart-row">
       <select class="menu-size-select" aria-label="Choose size for ${escapeHtml(item.name)}">
@@ -710,7 +707,7 @@ document.querySelectorAll('[data-whatsapp-plan]').forEach(form => {
     event.preventDefault();
     const data = new FormData(form);
     const lines = [
-      'Hi, I want to plan a home party or bulk food order.',
+      'Hi, I need to order for more, a home party or a get together.',
       `Name: ${data.get('name') || ''}`,
       `Phone: ${data.get('phone') || ''}`,
       `Email: ${data.get('email') || ''}`,

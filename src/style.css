@@ -11778,14 +11778,11 @@ body[data-page="home"] .home-reviews {
 }
 
 body[data-page="home"] .home-reviews::before {
-  background-image:
-    linear-gradient(135deg, rgba(18, 140, 126, .045) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(18, 140, 126, .045) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(18, 140, 126, .035) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(18, 140, 126, .035) 25%, #f7faf5 25%);
-  background-position: 14px 0, 14px 0, 0 0, 0 0;
-  background-size: 28px 28px;
-  opacity: .72;
+  background-image: url("../public/images/home/reviews-steam-pattern.svg");
+  background-repeat: repeat-x;
+  background-position: center 20px;
+  background-size: 900px 338px;
+  opacity: .34;
 }
 
 body[data-page="home"] .home-reviews-kicker {
@@ -11824,6 +11821,7 @@ body[data-page="home"] .home-reviews-track {
   gap: 14px;
   overflow: visible;
   scroll-snap-type: none;
+  animation: homeReviewsDrift 8s ease-in-out infinite alternate;
 }
 
 body[data-page="home"] .home-review-card,
@@ -11897,6 +11895,11 @@ body[data-page="home"] .home-reviews-cta:hover {
   background: #1fb457;
 }
 
+@keyframes homeReviewsDrift {
+  from { transform: translateX(-14px); }
+  to { transform: translateX(14px); }
+}
+
 @media (max-width: 760px) {
   body[data-page="svety"] .know-cook-text p.belief-red-big {
     font-size: clamp(1.65rem, 7vw, 2.35rem);
@@ -11925,6 +11928,7 @@ body[data-page="home"] .home-reviews-cta:hover {
     gap: 12px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    animation: none;
   }
 
   body[data-page="home"] .home-review-card,
@@ -12012,6 +12016,7 @@ body[data-page="home"] .home-reviews-cta:hover {
     overflow-x: auto;
     scroll-padding-inline: 52px;
     scroll-snap-type: x mandatory;
+    animation: none;
   }
 
   body[data-page="home"] .home-review-card,
