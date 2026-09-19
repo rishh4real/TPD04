@@ -163,14 +163,14 @@ const defaultMenuItems = [
   {
     section: 'nonveg',
     name: 'Chicken Tikkis',
-    detail: 'Who said tikkis need potatoes? Juicy minced chicken, seasoned with herbs and spices, shaped by hand and pan-seared till golden. Protein-packed little bites that work as a snack, a side, or straight out of the box.',
+    detail: 'Who said tikkis need potatoes? Juicy minced chicken, seasoned with herbs and spices, shaped by hand and pan-seared till golden. Little bites that work as a snack, a side, or straight out of the box.',
     protein: '35-40 g',
     prices: ['500', '850', '1600'],
   },
   {
     section: 'nonveg',
     name: 'Tandoori Chicken Salad (Boneless)',
-    detail: 'Tandoori chicken decided to get fresh. Smoky, juicy boneless chicken tossed with crunchy greens, onions and veggies, finished with a punchy dressing. Big on flavour, generous on protein, definitely not sad-desk-salad territory.',
+    detail: 'Tandoori chicken decided to get fresh. Smoky, juicy boneless chicken tossed with crunchy greens, onions and veggies, finished with a punchy dressing. Big on flavour, definitely not sad-desk-salad territory.',
     protein: '35-40 g',
     prices: ['500', '850', '1600'],
   },
@@ -225,10 +225,10 @@ const defaultMenuItems = [
   },
   {
     section: 'nonveg',
-    name: 'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+    name: 'Bihari Sarson Fish (Rohu) (5 pcs / 10 pcs)',
     detail: 'If you grew up with mustard fish, this will feel like coming home. Rohu cooked in a punchy mustard gravy with garlic, tomatoes and green chillies - sharp, rustic and unmistakably Bihari. The kind of curry that demands a little extra rice.',
     protein: '30-35 g',
-    prices: ['500', '900', '1750'],
+    prices: ['-', '900', '1750'],
   },
   {
     section: 'nonveg',
@@ -239,10 +239,10 @@ const defaultMenuItems = [
   },
   {
     section: 'nonveg',
-    name: 'Chutney Fish Boneless Fish',
-    detail: 'Boneless fish (sole/bhetki) coated generously with coriander, mint, green chilli and a squeeze of lime. Fresh and chatpata.',
+    name: 'Chutney/Mustard Boneless Fish',
+    detail: 'Boneless fish (sole/bhetki) coated generously with coriander, mint, mustard, green chilli and a squeeze of lime. Fresh and chatpata.',
     protein: '35-40 g',
-    prices: ['650', '1250', '2400'],
+    prices: ['850', '1250', '2400'],
   },
   {
     section: 'nonveg',
@@ -424,9 +424,9 @@ const proteinDropItemNames = new Set([
   'Oriental Style Chicken (Boneless)',
   'Chicken Keema (Mexican Style)',
   'Chicken Sliders (2 pieces)',
-  'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+  'Bihari Sarson Fish (Rohu) (5 pcs / 10 pcs)',
   'Machli Ke Tikki',
-  'Chutney Fish Boneless Fish',
+  'Chutney/Mustard Boneless Fish',
   'Oriental Style Boneless Fish',
   'Sumac Barley, Nuts, Pomegranate, Bell Pepper & Feta Salad',
   'Mixed Bean Salad',
@@ -458,7 +458,7 @@ const chatkaaraItemNames = new Set([
   'Tawa Chicken',
   'Chicken Tikkis',
   'Chicken Bharta Bihari Style (Boneless)',
-  'Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)',
+  'Bihari Sarson Fish (Rohu) (5 pcs / 10 pcs)',
   'Machli Ke Tikki',
   'Litti Chokha',
   'Sattu Paratha',
@@ -503,7 +503,7 @@ const itemSizeLabelOverrides = new Map([
   ['Chicken Tikkis', ['5 pcs', '10 pcs', '20 pcs']],
   ['Gosht Kebab Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
   ['Chicken Sliders (2 pieces)', ['2 pieces', '500g', '1kg']],
-  ['Bihari Sarson Fish (Rohu) (2 pcs / 5 pcs / 10 pcs)', ['2 pcs', '5 pcs', '10 pcs']],
+  ['Bihari Sarson Fish (Rohu) (5 pcs / 10 pcs)', ['', '5 pcs', '10 pcs']],
   ['Machli Ke Tikki', ['5 pcs', '10 pcs', '20 pcs']],
   ['Litti Chokha', ['6 pcs', '12 pcs', '1kg']],
   ['Sattu Paratha', ['4 pcs', '500g', '1kg']],
@@ -600,10 +600,6 @@ const menuCard = (item, index) => `
   <article class="menu-card menu-card-${item.section} reveal">
     <div class="menu-card-top">
       <span>${String(index + 1).padStart(2, '0')}</span>
-      <div class="protein-meter" aria-label="${item.protein} approximate protein">
-        <span>${escapeHtml(item.protein)}</span>
-        <i>protein</i>
-      </div>
     </div>
     <h3 title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</h3>
     <p title="${escapeHtml(item.detail)}">${escapeHtml(item.detail)}</p>
@@ -668,7 +664,6 @@ if (nonVegGrid && vegGrid) {
       item.name,
       item.detail,
       item.section === 'veg' ? 'vegetarian veg' : 'non vegetarian nonveg non-veg',
-      item.protein,
       menuFamily(item),
       ...getAvailableSizes(item).map(option => `${option.label} ${option.price}`),
     ].join(' ').toLowerCase();
@@ -894,7 +889,7 @@ const formatBotItem = item => {
   const sizes = getAvailableSizes(item)
     .map(option => `${option.label} ${formatPrice(option.price)}`)
     .join(', ');
-  return `<li><b>${escapeHtml(item.name)}</b><span>${escapeHtml(item.protein)} protein · ${item.section === 'veg' ? 'Veg' : 'Non-veg'} · ${escapeHtml(menuFamily(item))}</span><small>${escapeHtml(sizes)}</small></li>`;
+  return `<li><b>${escapeHtml(item.name)}</b><span>${item.section === 'veg' ? 'Veg' : 'Non-veg'} · ${escapeHtml(menuFamily(item))}</span><small>${escapeHtml(sizes)}</small></li>`;
 };
 
 const botMenuLink = item => chatkaaraItemNames.has(item.name)
@@ -906,11 +901,7 @@ const answerMenuQuestion = rawQuestion => {
   const wantsVeg = /\b(veg|vegetarian|paneer|tofu|soya|salad|dal)\b/.test(question);
   const wantsNonVeg = /\b(non veg|non-veg|nonvegetarian|chicken|fish|mutton|meat|gosht)\b/.test(question);
   const wantsChatkaara = /\b(chatkaara|bihari|litti|sattu|mutton|sarson|chokha)\b/.test(question);
-  const wantsProteinDrop = /\b(protein drop|salad|tofu|soya|paneer|grill|40)\b/.test(question);
-  const wants40Plus = /\b(40\+|40 g\+|40g\+|40 plus|above 40|more than 40|over 40)\b/.test(question);
-  const proteinMatch = question.match(/(\d{2})\s*(g|gm|gram|grams)?/);
-  const targetProtein = proteinMatch ? Number(proteinMatch[1]) : 0;
-  const wantsProtein = wants40Plus || targetProtein >= 20 || /\b(high protein|protein|protien)\b/.test(question);
+  const wantsProteinDrop = /\b(protein drop|salad|tofu|soya|paneer|grill)\b/.test(question);
   const wantsPrice = /\b(price|cost|rate|rs|₹|rupee|budget)\b/.test(question);
   const wantsOrder = /\b(order|cart|whatsapp|deliver|delivery|bulk|party|plan)\b/.test(question);
   const wantsAbout = /\b(svety|cook|chef|founder|story|about|who are you|who is)\b/.test(question);
@@ -932,23 +923,23 @@ const answerMenuQuestion = rawQuestion => {
 
   if (wantsOrder) {
     return `
-      <p>For ordering, add dishes to cart and send the cart on WhatsApp. For bulk food or a home party, use <a href="./menu.html#plan-protein-spread">Plan your protein spread</a>.</p>
+      <p>For ordering, add dishes to cart and send the cart on WhatsApp. For bulk food or a home party, use <a href="./menu.html#plan-protein-spread">Plan your party spread</a>.</p>
       <p>Delivery is currently Gurgaon-focused, and final timing/charges are confirmed on WhatsApp.</p>
     `;
   }
 
   if (wantsAbout) {
     return `
-      <p>The Protein Drop is Svety's personal small-batch kitchen: real food, high protein, and proper chatkaara without making healthy food joyless.</p>
+      <p>The Protein Drop is Svety's personal small-batch kitchen: real food, thoughtful cooking, and proper chatkaara without making everyday meals joyless.</p>
       <p>Read the story here: <a href="./svety.html#know-your-cook">Know your cook</a>.</p>
     `;
   }
 
-  if (wantsMenu && !wantsProtein && !textMatches.length) {
+  if (wantsMenu && !textMatches.length) {
     return `
       <p>There are two menus:</p>
       <ul>
-        <li><b>The Protein Drop</b><span>High-protein salads, bowls, paneer, tofu, chicken, fish and soya.</span><small><a href="./protein-drop-menu.html">Open Protein Drop menu</a></small></li>
+        <li><b>The Protein Drop</b><span>Fresh salads, bowls, paneer, tofu, chicken, fish and soya.</span><small><a href="./protein-drop-menu.html">Open Protein Drop menu</a></small></li>
         <li><b>Chatkaara - The Bihari Experience</b><span>Ghar ka Bihari mutton, chicken, fish, litti chokha, sattu and desi plates.</span><small><a href="./chatkaara-bihari-menu.html">Open Chatkaara menu</a></small></li>
       </ul>
     `;
@@ -958,42 +949,23 @@ const answerMenuQuestion = rawQuestion => {
     return `<p>Here are the prices I found:</p><ul>${textMatches.slice(0, 5).map(formatBotItem).join('')}</ul>`;
   }
 
-  if (wantsProtein) {
-    const minimum = wants40Plus ? 41 : targetProtein || 35;
-    const proteinItems = candidates
-      .filter(item => {
-        const range = proteinRange(item.protein);
-        return wants40Plus ? range.max >= 41 : range.max >= minimum;
-      })
-      .sort((a, b) => proteinRange(b.protein).max - proteinRange(a.protein).max || a.name.localeCompare(b.name));
-    const fallbackItems = proteinItems.length ? proteinItems : candidates
-      .filter(item => proteinRange(item.protein).max >= 35)
-      .slice(0, 6);
-
-    return `
-      <p>${wants40Plus ? 'For 40g+ protein, these are the strongest picks:' : `For around ${minimum}g protein, start with these:`}</p>
-      <ul>${fallbackItems.slice(0, 7).map(formatBotItem).join('')}</ul>
-      <p class="tpd-bot-note">Tip: 40g+ is mostly in soya options; 35-40g has many chicken, mutton and fish picks too.</p>
-    `;
-  }
-
   if (textMatches.length) {
     return `<p>I found these menu matches:</p><ul>${textMatches.slice(0, 6).map(formatBotItem).join('')}</ul><p><a href="${botMenuLink(textMatches[0])}">Open this menu</a></p>`;
   }
 
   if (wantsVeg) {
-    const vegItems = candidates.filter(item => item.section === 'veg' && proteinRange(item.protein).max >= 25);
-    return `<p>Good veg protein picks:</p><ul>${vegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
+    const vegItems = candidates.filter(item => item.section === 'veg');
+    return `<p>Good veg picks:</p><ul>${vegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
   }
 
   if (wantsNonVeg) {
-    const nonVegItems = candidates.filter(item => item.section === 'nonveg' && proteinRange(item.protein).max >= 35);
-    return `<p>Strong non-veg protein picks:</p><ul>${nonVegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
+    const nonVegItems = candidates.filter(item => item.section === 'nonveg');
+    return `<p>Good non-veg picks:</p><ul>${nonVegItems.slice(0, 6).map(formatBotItem).join('')}</ul>`;
   }
 
   return `
-    <p>I can help with menu picks, protein targets, veg/non-veg options, prices, ordering and party planning.</p>
-    <p>Try asking: <b>“show 40g+ protein veg items”</b> or <b>“best chicken high protein options”</b>.</p>
+    <p>I can help with menu picks, veg/non-veg options, prices, ordering and party planning.</p>
+    <p>Try asking: <b>“show veg items”</b> or <b>“best chicken options”</b>.</p>
   `;
 };
 
@@ -1023,17 +995,17 @@ const initMenuBot = () => {
       </div>
       <div class="tpd-bot-messages" aria-live="polite">
         <article class="tpd-bot-message bot">
-          <p>Tell me your protein target, veg/non-veg preference, budget or party size. I will suggest from our real menu.</p>
+          <p>Tell me your veg/non-veg preference, budget or party size. I will suggest from our real menu.</p>
         </article>
       </div>
       <div class="tpd-bot-suggestions">
-        <button type="button" data-bot-question="Show 40g+ protein items">40g+ protein</button>
-        <button type="button" data-bot-question="Best vegetarian high protein items">Veg protein</button>
-        <button type="button" data-bot-question="Best non veg high protein items">Non-veg</button>
+        <button type="button" data-bot-question="Show vegetarian items">Veg picks</button>
+        <button type="button" data-bot-question="Best fish options">Fish options</button>
+        <button type="button" data-bot-question="Best non veg items">Non-veg</button>
         <button type="button" data-bot-question="How do I order for a party?">Party order</button>
       </div>
       <form class="tpd-bot-form">
-        <input type="text" name="question" autocomplete="off" placeholder="Ask about menu, protein, prices..." />
+        <input type="text" name="question" autocomplete="off" placeholder="Ask about menu, prices..." />
         <button type="submit">Send</button>
       </form>
     </div>
@@ -1535,7 +1507,7 @@ const setBowlWizardStep = step => {
   if (nextButton) nextButton.hidden = stepNumber === 2;
   if (hint) {
     hint.textContent = stepNumber === 1
-      ? 'Step 1 of 2 — choose your protein'
+      ? 'Step 1 of 2 — choose your main'
       : 'Step 2 of 2 — style, base & flavour';
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1586,7 +1558,7 @@ if (gramBuilder) {
     const style = getGramChoice('style');
     const flavour = getGramChoice('flavour');
     const summaryLines = [
-      proteins.length ? `Protein: ${proteins.map(formatGramItem).join(', ')}` : 'Protein: add at least one protein amount',
+      proteins.length ? `Main: ${proteins.map(formatGramItem).join(', ')}` : 'Main: add at least one main ingredient amount',
       sides.length ? `Sides: ${sides.map(formatGramItem).join(', ')}` : 'Sides: add sides if you want them',
       `Finish: ${style} + ${flavour}`,
     ];
@@ -1598,7 +1570,7 @@ if (gramBuilder) {
 
     if (!proteins.length && makeButton) {
       makeButton.disabled = true;
-      makeButton.textContent = 'Add protein grams';
+      makeButton.textContent = 'Add main ingredient';
     } else if (makeButton) {
       makeButton.disabled = false;
       makeButton.textContent = 'Make my bowl';
